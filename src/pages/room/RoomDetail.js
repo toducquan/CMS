@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, Box, Tab } from '@mui/material';
-import { getUserByIdService, getListUsersService } from 'services/userService';
 import { useParams, useNavigate } from 'react-router';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import UserInTeam from './UserInTeam';
 import { useTranslation } from 'react-i18next';
-import UserInfo from './UserInfo';
-import UserReport from './UserReport';
 import LoadingPage from 'components/LoadingPage';
-import { SLUG } from 'contants/auth';
+import RoomInfor from './component/RoomInfor';
+import StudentRoom from './component/StudentRoom';
+import { getRoomByIdService, updateRoomByIdService } from 'services/roomService';
+import { raiseNotification } from 'store/reducers/notification';
+import { useDispatch } from 'react-redux';
 
 /**
  * Des: UI user detail
@@ -22,39 +22,29 @@ const UserDetail = () => {
     const navigate = useNavigate();
     const [valueTab, setValueTab] = useState('1');
     const [isLoading, setIsLoading] = useState(true);
+    const dispatch = useDispatch();
+    const [room, setRoom] = useState();
     useEffect(() => {
         setTimeout(() => {
-            getUserById();
+            getRoomById();
         }, 500);
-    }, [isLoading]);
-    const getUserById = () => {
-        const listUserInCompany = [];
-        getListUsersService()
-            .then((res) => {
-                res.data.data.map((item) => {
-                    listUserInCompany.push(item.id);
-                });
-                if (!listUserInCompany.includes(id)) {
-                    navigate(`/company/${slug}/not-found`);
-                }
-            })
-            .catch((err) => {
-                console.log('err: ', err);
-            });
-
-        getUserByIdService(id)
-            .then((res) => {
-                setInfoUser(res.data.data);
-                setUserInTeam(res.data.data.teams);
+    }, []);
+    const getRoomById = () => {
+        getRoomByIdService(id).then((res) => {
+            console.log('vao: ', res.data);
+            setRoom(res.data);
+            setIsLoading(false);
+        });
+    };
+    const updateRoomById = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            updateRoomByIdService(id, room).then((res) => {
+                getRoomById();
                 setIsLoading(false);
-            })
-            .catch((err) => {
-                console.log('err: ', err);
-                if (err.response.status == 500) {
-                    navigate(`/company/${slug}/not-found`);
-                    setIsLoading(false);
-                }
+                dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
             });
+        }, [500]);
     };
 
     // Change tab
@@ -70,14 +60,13 @@ const UserDetail = () => {
         <React.Fragment>
             <Box sx={{ width: '100%', mr: 2 }}>
                 <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                    {t('page_user.text.title')}
+                    {t('Room information')}
                 </Typography>
                 <TabContext value={valueTab}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '322px' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label={t('page_user.tab.info_user.name_tab')} value="1" />
-                            <Tab label={t('page_user.tab.in_team.name_tab')} value="2" />
-                            <Tab label={t('page_user.tab.report.name_tab')} value="3" />
+                            <Tab label={t('Room Detail')} value="1" />
+                            <Tab label={t('Students')} value="2" />
                         </TabList>
                     </Box>
                     {isLoading ? (
@@ -85,13 +74,10 @@ const UserDetail = () => {
                     ) : (
                         <>
                             <TabPanel value="1">
-                                <UserInfo infoUser={infoUser} getUserById={getUserById} parentCallback={parentCallback} />
+                                <RoomInfor />
                             </TabPanel>
                             <TabPanel value="2">
-                                <UserInTeam getUserById={getUserById} userInTeam={userInTeam} idUser={id} parentCallback={parentCallback} />
-                            </TabPanel>
-                            <TabPanel value="3">
-                                <UserReport />
+                                <StudentRoom />
                             </TabPanel>
                         </>
                     )}

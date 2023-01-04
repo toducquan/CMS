@@ -49,7 +49,16 @@ const pages = {
                     title: 'Room List',
                     type: 'item',
                     url: '/building/room-list',
-                    breadcrumbs: true
+                    breadcrumbs: true,
+                    children: [
+                        {
+                            id: 'room-detail',
+                            title: 'Room detail',
+                            type: 'item-child',
+                            url: '/building/room-list/:id',
+                            breadcrumbs: true
+                        }
+                    ]
                 }
             ]
         }

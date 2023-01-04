@@ -13,6 +13,7 @@ export default function ThemeRoutes() {
     const token = localStorage.getItem('TOKEN');
 
     useEffect(() => {
+        console.log('vaoooo111');
         if (!token) {
             navigate('/login');
         } else {
