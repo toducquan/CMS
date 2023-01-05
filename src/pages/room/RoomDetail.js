@@ -31,15 +31,15 @@ const UserDetail = () => {
     }, []);
     const getRoomById = () => {
         getRoomByIdService(id).then((res) => {
-            console.log('vao: ', res.data);
             setRoom(res.data);
             setIsLoading(false);
         });
     };
-    const updateRoomById = () => {
+    const updateRoomById = (value) => {
+        console.log('vao: ', value);
         setIsLoading(true);
         setTimeout(() => {
-            updateRoomByIdService(id, room).then((res) => {
+            updateRoomByIdService(id, value).then((res) => {
                 getRoomById();
                 setIsLoading(false);
                 dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
@@ -74,10 +74,10 @@ const UserDetail = () => {
                     ) : (
                         <>
                             <TabPanel value="1">
-                                <RoomInfor />
+                                <RoomInfor room={room} setRoom={setRoom} updateRoomById={updateRoomById} />
                             </TabPanel>
                             <TabPanel value="2">
-                                <StudentRoom />
+                                <StudentRoom studentInRoom={room?.users} />
                             </TabPanel>
                         </>
                     )}

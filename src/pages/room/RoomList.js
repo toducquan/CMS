@@ -235,7 +235,7 @@ const RoomList = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this building?')}
+                            title={t('Delete this room?')}
                             content={t('')}
                             textBtnBack={t('back')}
                             textBtnSubmit={t('delete')}
