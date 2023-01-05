@@ -20,7 +20,7 @@ export const updateRoomByIdService = async (id, data) => {
     return res;
 };
 
-export const removeRoomByIdService = async (id) => {
-    const res = await apiUtils.delete('/rooms/' + id);
+export const removeStudentsInRoomService = async (data) => {
+    const res = await apiUtils.patch('/rooms/students-in-room', data);
     return res;
 };

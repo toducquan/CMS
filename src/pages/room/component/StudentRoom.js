@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Grid, Stack, Typography, Box, Button, InputLabel, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
+import { Grid, Stack, Typography, Box, Button, InputLabel, FormControl, OutlinedInput, InputAdornment, Checkbox } from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
 import { getListBuildingService } from 'services/buildingService';
 import Table from '@mui/material/Table';
@@ -21,10 +21,10 @@ import Breakword from 'components/common/breakword/index';
 import { setStudentRoom } from 'store/reducers/building';
 
 // Des: UI and function List company
-const StudentRoom = ({ studentInRoom }) => {
+const StudentRoom = ({ studentInRoom, removeStudentsInRoom }) => {
     const { t } = useTranslation();
     const [modalDeleteVisible, setModalDeleteVisible] = useState(false);
-    const [selectStudents, setSelectStudents] = useState();
+    const [selectStudents, setSelectStudents] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const tableRef = useRef();
@@ -33,6 +33,22 @@ const StudentRoom = ({ studentInRoom }) => {
     // Close modal edit team
     const callbackClose = (childData) => {
         setModalDeleteVisible(false);
+    };
+
+    const handleClickCheckBox = (id) => {
+        let arr;
+        const idExist = selectStudents.filter((item) => {
+            return item == id;
+        });
+        if (idExist.length == 0) {
+            arr = [...selectStudents];
+            arr.push(id);
+        } else {
+            arr = selectStudents.filter((item) => {
+                return item != id;
+            });
+        }
+        setSelectStudents([...arr]);
     };
 
     return (
@@ -57,9 +73,21 @@ const StudentRoom = ({ studentInRoom }) => {
                                 placeholder={t('Enter student id')}
                             />
                         </FormControl>
-                        <Button variant="contained" sx={{ ml: 3, width: '6rem' }}>
+                        <Button variant="contained" sx={{ ml: 3, width: 'rem' }}>
                             {t('Search')}
                         </Button>
+                    </Stack>
+                    <Stack direction="row">
+                        {selectStudents.length != 0 && (
+                            <Button
+                                variant="contained"
+                                sx={{ mr: 0, width: '6rem' }}
+                                color="error"
+                                onClick={() => removeStudentsInRoom(selectStudents)}
+                            >
+                                {t('Remove')}
+                            </Button>
+                        )}
                     </Stack>
                 </Stack>
                 <Paper
@@ -71,6 +99,7 @@ const StudentRoom = ({ studentInRoom }) => {
                         <Table stickyHeader ref={tableRef} aria-label="simple table" padding={'none'}>
                             <TableHead>
                                 <TableRow bgcolor="#f1f1f1">
+                                    <TableCell width="5%" align="left"></TableCell>
                                     <TableCell width="5%" style={{ minWidth: 70 }} align="left">
                                         {t('No')}
                                     </TableCell>
@@ -91,6 +120,16 @@ const StudentRoom = ({ studentInRoom }) => {
                             <TableBody>
                                 {studentInRoom?.map((row, index) => (
                                     <TableRow hover key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                        <TableCell align="left">
+                                            <Grid container spacing={3}>
+                                                <Grid item xs={7}>
+                                                    <Checkbox
+                                                        // checked={checkedTeams.includes(row.id)}
+                                                        onChange={() => handleClickCheckBox(row.id)}
+                                                    />
+                                                </Grid>
+                                            </Grid>
+                                        </TableCell>
                                         <TableCell align="left">{index}</TableCell>
                                         <TableCell align="left">
                                             <Breakword

@@ -54,7 +54,6 @@ const AuthLogin = () => {
                         .then((res) => {
                             setStatus({ success: false });
                             setSubmitting(false);
-                            console.log('vao: ', res.data);
                             navigate(`/`);
                             setLoading(false);
                         })

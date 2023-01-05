@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 import LoadingPage from 'components/LoadingPage';
 import RoomInfor from './component/RoomInfor';
 import StudentRoom from './component/StudentRoom';
-import { getRoomByIdService, updateRoomByIdService } from 'services/roomService';
+import { getRoomByIdService, updateRoomByIdService, removeStudentsInRoomService } from 'services/roomService';
 import { raiseNotification } from 'store/reducers/notification';
 import { useDispatch } from 'react-redux';
 
@@ -36,10 +36,22 @@ const UserDetail = () => {
         });
     };
     const updateRoomById = (value) => {
-        console.log('vao: ', value);
         setIsLoading(true);
         setTimeout(() => {
             updateRoomByIdService(id, value).then((res) => {
+                getRoomById();
+                setIsLoading(false);
+                dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+            });
+        }, [500]);
+    };
+
+    const removeStudentsInRoom = (value) => {
+        setIsLoading(true);
+        setTimeout(() => {
+            removeStudentsInRoomService({
+                students: value
+            }).then((res) => {
                 getRoomById();
                 setIsLoading(false);
                 dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
@@ -77,7 +89,7 @@ const UserDetail = () => {
                                 <RoomInfor room={room} setRoom={setRoom} updateRoomById={updateRoomById} />
                             </TabPanel>
                             <TabPanel value="2">
-                                <StudentRoom studentInRoom={room?.users} />
+                                <StudentRoom studentInRoom={room?.users} removeStudentsInRoom={removeStudentsInRoom} />
                             </TabPanel>
                         </>
                     )}

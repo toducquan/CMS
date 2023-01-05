@@ -73,7 +73,6 @@ const Profile = () => {
     const [user, setUser] = useState();
 
     useEffect(() => {
-        console.log('vaooooo');
         if (userToken) {
             getProfileUserService()
                 .then((res) => {
@@ -86,7 +85,6 @@ const Profile = () => {
                 });
             getListBuildingService()
                 .then((res) => {
-                    console.log('vao: ', res.data);
                     dispatch(setBuildingList({ building: res.data }));
                 })
                 .catch((err) => {
