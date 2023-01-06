@@ -107,7 +107,6 @@ const BuildingDetail = () => {
                                                             name="name"
                                                             error={Boolean(touched.name && errors.name)}
                                                             onBlur={handleBlur}
-                                                            placeholder={t('enter')}
                                                             value={values?.name}
                                                             onChange={handleChange}
                                                         />
@@ -211,7 +210,7 @@ const BuildingDetail = () => {
                                                         size="large"
                                                         variant="contained"
                                                         color="secondary"
-                                                        onClick={() => navigate(`/building/building-list`)}
+                                                        onClick={() => navigate(`/building`)}
                                                     >
                                                         {t('back')}
                                                     </Button>

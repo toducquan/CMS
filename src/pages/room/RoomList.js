@@ -199,7 +199,7 @@ const RoomList = () => {
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
-                                                                onClick={() => navigate(`/building/room-list/${row?.id}`)}
+                                                                onClick={() => navigate(`/room/${row?.id}`)}
                                                             >
                                                                 {t('Detail')}
                                                             </Button>

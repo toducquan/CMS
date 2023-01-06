@@ -72,7 +72,6 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 name="name"
                                                 error={Boolean(touched.name && errors.name)}
                                                 onBlur={handleBlur}
-                                                placeholder={t('enter')}
                                                 style={{ marginBottom: '1rem' }}
                                                 value={values?.name}
                                                 onChange={handleChange}
@@ -263,7 +262,6 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 name="managerId"
                                                 error={Boolean(touched.managerId && errors.managerId)}
                                                 onBlur={handleBlur}
-                                                placeholder={t('enter')}
                                                 style={
                                                     profile.role == 'BUILDING_MANAGER'
                                                         ? { backgroundColor: '', marginBottom: '1rem' }
@@ -305,7 +303,6 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 minRows={4}
                                                 maxRows={4}
                                                 multiline
-                                                placeholder={t('enter')}
                                                 style={{ marginBottom: '1rem' }}
                                                 value={values?.note}
                                                 onChange={handleChange}
@@ -330,7 +327,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 size="large"
                                                 variant="contained"
                                                 color="secondary"
-                                                onClick={() => navigate(`/building/room-list/`)}
+                                                onClick={() => navigate(`/room`)}
                                             >
                                                 {t('Back')}
                                             </Button>

@@ -1,10 +1,11 @@
-import { DashboardOutlined, HomeOutlined, UserOutlined } from '@ant-design/icons';
+import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
     DashboardOutlined,
     HomeOutlined,
-    UserOutlined
+    UserOutlined,
+    GroupOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -25,44 +26,21 @@ const pages = {
         {
             id: 'building',
             title: 'Building',
-            type: 'collapse',
+            type: 'item',
             url: '/building',
             icon: icons.HomeOutlined,
+            breadcrumbs: true,
             children: [
                 {
-                    id: 'building-list',
-                    title: 'Building List',
-                    type: 'item',
-                    url: '/building/building-list',
-                    breadcrumbs: true,
-                    children: [
-                        {
-                            id: 'building-detail',
-                            title: 'Building detail',
-                            type: 'item-child',
-                            url: '/building/building-list/:id',
-                            breadcrumbs: true
-                        }
-                    ]
-                },
-                {
-                    id: 'room-list',
-                    title: 'Room List',
-                    type: 'item',
-                    url: '/building/room-list',
-                    breadcrumbs: true,
-                    children: [
-                        {
-                            id: 'room-detail',
-                            title: 'Room detail',
-                            type: 'item-child',
-                            url: '/building/room-list/:id',
-                            breadcrumbs: true
-                        }
-                    ]
+                    id: 'building-detail',
+                    title: 'Building detail',
+                    type: 'item-child',
+                    url: '/building/:id',
+                    breadcrumbs: true
                 }
             ]
         },
+
         {
             id: 'user',
             title: 'User',
@@ -117,6 +95,23 @@ const pages = {
                             breadcrumbs: true
                         }
                     ]
+                }
+            ]
+        },
+        {
+            id: 'room',
+            title: 'Room',
+            type: 'item',
+            url: '/room',
+            icon: icons.GroupOutlined,
+            breadcrumbs: true,
+            children: [
+                {
+                    id: 'room-detail',
+                    title: 'Room detail',
+                    type: 'item-child',
+                    url: '/room/:id',
+                    breadcrumbs: true
                 }
             ]
         }

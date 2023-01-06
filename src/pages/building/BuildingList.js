@@ -160,7 +160,7 @@ const BuildingList = () => {
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
-                                                                onClick={() => navigate(`/building/building-list/${row?.id}`)}
+                                                                onClick={() => navigate(`/building/${row?.id}`)}
                                                             >
                                                                 {t('Detail')}
                                                             </Button>

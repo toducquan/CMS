@@ -24,19 +24,19 @@ const MainRoutes = {
             element: <DashboardDefault />
         },
         {
-            path: '/building/building-list',
+            path: '/building',
             element: <BuildingList />
         },
         {
-            path: '/building/building-list/:id',
+            path: '/building/:id',
             element: <BuildingDetail />
         },
         {
-            path: '/building/room-list',
+            path: '/room',
             element: <RoomList />
         },
         {
-            path: '/building/room-list/:id',
+            path: '/room/:id',
             element: <RoomDetail />
         },
         {

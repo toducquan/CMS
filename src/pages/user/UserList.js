@@ -51,7 +51,6 @@ const UserList = () => {
     const path = window.location.pathname.split('/')[2];
 
     useEffect(() => {
-        console.log('vaoooo');
         setUserQuery();
         setIsLoading(true);
         getUserFirstLoad();
@@ -220,6 +219,12 @@ const UserList = () => {
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
                                                 {t('Email')}
                                             </TableCell>
+                                            {path == 'student-list' && (
+                                                <TableCell width="5%" style={{ minWidth: 80 }} align="left">
+                                                    {t('Room')}
+                                                </TableCell>
+                                            )}
+
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
                                                 {t('Gender')}
                                             </TableCell>
@@ -264,6 +269,7 @@ const UserList = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell align="left">{row?.email}</TableCell>
+                                                {path == 'student-list' && <TableCell align="left">{row?.room?.name}</TableCell>}
                                                 <TableCell align="left">{row?.gender}</TableCell>
                                                 <TableCell align="left">{row?.region}</TableCell>
                                                 <TableCell align="left">{row?.religion}</TableCell>
@@ -291,7 +297,7 @@ const UserList = () => {
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
-                                                                onClick={() => navigate(`/building/room-list/${row?.id}`)}
+                                                                onClick={() => navigate(`/user/${path}/${row?.id}`)}
                                                             >
                                                                 {t('Detail')}
                                                             </Button>
