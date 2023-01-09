@@ -314,7 +314,7 @@ const UserDetail = () => {
                                                         <OutlinedInput
                                                             id="email"
                                                             style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
-                                                            name="name"
+                                                            name="email"
                                                             error={Boolean(touched.email && errors.email)}
                                                             onBlur={handleBlur}
                                                             value={values?.email}

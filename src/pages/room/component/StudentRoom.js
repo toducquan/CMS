@@ -18,7 +18,6 @@ import EmptyRows from 'components/EmptyRows';
 import ModalDelete from 'components/ModalDelete';
 import LoadingPage from 'components/LoadingPage';
 import Breakword from 'components/common/breakword/index';
-import { setStudentRoom } from 'store/reducers/building';
 
 // Des: UI and function List company
 const StudentRoom = ({ studentInRoom, removeStudentsInRoom }) => {

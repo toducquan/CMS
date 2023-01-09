@@ -31,6 +31,7 @@ import ModalDelete from 'components/ModalDelete';
 import LoadingPage from 'components/LoadingPage';
 import Breakword from 'components/common/breakword/index';
 import AddNewRentModal from './component/AddNewRentModal';
+import * as moment from 'moment';
 
 // Des: UI and function List company
 const ListRent = () => {
@@ -197,7 +198,7 @@ const ListRent = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell align="left">{row?.cost}</TableCell>
-                                                <TableCell align="left">{row?.deadline}</TableCell>
+                                                <TableCell align="left">{moment(row?.deadline).format('YYYY-MM-DD')}</TableCell>
                                                 <TableCell align="left">{row?.building?.name}</TableCell>
                                                 <TableCell align="center">
                                                     <Grid container>
@@ -210,7 +211,7 @@ const ListRent = () => {
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
-                                                                onClick={() => navigate(`/room/${row?.id}`)}
+                                                                onClick={() => navigate(`/rent/${row?.id}`)}
                                                             >
                                                                 {t('Detail')}
                                                             </Button>
