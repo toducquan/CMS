@@ -12,6 +12,8 @@ const BuildingDetail = Loadable(lazy(() => import('pages/building/BuildingDetail
 const RoomDetail = Loadable(lazy(() => import('pages/room/RoomDetail')));
 const UserList = Loadable(lazy(() => import('pages/user/UserList')));
 const UserDetail = Loadable(lazy(() => import('pages/user/UserDetail')));
+const ListRent = Loadable(lazy(() => import('pages/rent/ListRent')));
+const RentDetail = Loadable(lazy(() => import('pages/rent/RentDetail')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -62,6 +64,14 @@ const MainRoutes = {
         {
             path: '/user/student-list/:id',
             element: <UserDetail />
+        },
+        {
+            path: '/rent',
+            element: <ListRent />
+        },
+        {
+            path: '/rent/:id',
+            element: <RentDetail />
         }
     ]
 };

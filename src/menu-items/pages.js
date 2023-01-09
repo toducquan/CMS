@@ -1,11 +1,12 @@
-import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined } from '@ant-design/icons';
+import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined, TransactionOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
     DashboardOutlined,
     HomeOutlined,
     UserOutlined,
-    GroupOutlined
+    GroupOutlined,
+    TransactionOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -111,6 +112,23 @@ const pages = {
                     title: 'Room detail',
                     type: 'item-child',
                     url: '/room/:id',
+                    breadcrumbs: true
+                }
+            ]
+        },
+        {
+            id: 'rent',
+            title: 'Rent',
+            type: 'item',
+            url: '/rent',
+            icon: icons.TransactionOutlined,
+            breadcrumbs: true,
+            children: [
+                {
+                    id: 'rent-detail',
+                    title: 'Students in rent',
+                    type: 'item-child',
+                    url: '/rent/:id',
                     breadcrumbs: true
                 }
             ]
