@@ -1,4 +1,4 @@
-import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined, TransactionOutlined } from '@ant-design/icons';
+import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined, TransactionOutlined, FileDoneOutlined } from '@ant-design/icons';
 
 // icons
 const icons = {
@@ -6,7 +6,8 @@ const icons = {
     HomeOutlined,
     UserOutlined,
     GroupOutlined,
-    TransactionOutlined
+    TransactionOutlined,
+    FileDoneOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -130,6 +131,63 @@ const pages = {
                     type: 'item-child',
                     url: '/rent/:id',
                     breadcrumbs: true
+                }
+            ]
+        },
+        {
+            id: 'fee',
+            title: 'Fee',
+            type: 'collapse',
+            url: '/fee',
+            icon: icons.FileDoneOutlined,
+            children: [
+                {
+                    id: 'water-fee',
+                    title: 'Water Fee',
+                    type: 'item',
+                    url: '/fee/water',
+                    breadcrumbs: true,
+                    children: [
+                        {
+                            id: 'water-fee-detail',
+                            title: 'Water Fee Detail',
+                            type: 'item-child',
+                            url: '/fee/water/:id',
+                            breadcrumbs: true
+                        }
+                    ]
+                },
+                {
+                    id: 'electric-fee',
+                    title: 'Electric Fee',
+                    type: 'item',
+                    url: '/fee/electric',
+                    breadcrumbs: true,
+                    children: [
+                        {
+                            id: 'electric-fee-detail',
+                            title: 'Electric Fee Detail',
+                            type: 'item-child',
+                            url: '/fee/electric/:id',
+                            breadcrumbs: true
+                        }
+                    ]
+                },
+                {
+                    id: 'internet-fee',
+                    title: 'Internet Fee',
+                    type: 'item',
+                    url: '/fee/internet',
+                    breadcrumbs: true,
+                    children: [
+                        {
+                            id: 'internet-fee-detail',
+                            title: 'Internet Fee Detail',
+                            type: 'item-child',
+                            url: '/fee/internet/:id',
+                            breadcrumbs: true
+                        }
+                    ]
                 }
             ]
         }

@@ -13,7 +13,7 @@ import {
     MenuItem
 } from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
-import { addRoomService, getListRoomService } from 'services/roomService';
+import { addFeeService, getListFeeService } from 'services/feeService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -30,17 +30,20 @@ import EmptyRows from 'components/EmptyRows';
 import ModalDelete from 'components/ModalDelete';
 import LoadingPage from 'components/LoadingPage';
 import Breakword from 'components/common/breakword/index';
-import { getListUserService } from 'services/userService';
+import AddNewFeeModal from './component/AddNewFeeModal';
+import * as moment from 'moment';
 
 // Des: UI and function List company
-const UserList = () => {
+const ListFee = () => {
     const { t } = useTranslation();
 
-    const building = useSelector((state) => state.building.building);
-    const [user, setUser] = useState();
-    const [userQuery, setUserQuery] = useState();
+    const room = useSelector((state) => state.room.room);
+    const [fee, setFee] = useState();
+    const [modalAddVisible, setModalAddVisible] = useState();
+    const [newFee, setNewFee] = useState();
+    const [feeQuery, setFeeQuery] = useState();
     const [modalDeleteVisible, setModalDeleteVisible] = useState(false);
-    const [selectedUser, setSelectedUser] = useState();
+    const [selectedFee, setSelectedFee] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [isLoadingSearch, setIsLoadingSearch] = useState(false);
     const dispatch = useDispatch();
@@ -51,28 +54,34 @@ const UserList = () => {
     const path = window.location.pathname.split('/')[2];
 
     useEffect(() => {
-        setUserQuery();
         setIsLoading(true);
-        getUserFirstLoad();
+        setFeeQuery();
+        getFeeFirstLoad();
     }, [window.location.pathname]);
 
     // Delete company in list company
     const deleteBuilding = () => {};
 
+    const handleAddNewFee = () => {
+        setIsLoading(true);
+        addFeeService(newFee).then(() => {
+            getFee();
+            dispatch(raiseNotification({ visible: true, content: 'Create successfully', severity: 'success' }));
+            setIsLoading(false);
+            setModalAddVisible(false);
+        });
+    };
     // Get list company
-    const getUser = () => {
+    const getFee = () => {
         setIsLoadingSearch(true);
         setTimeout(() => {
-            getListUserService({
-                ...userQuery,
-                role: path == 'building-manager-list' ? 'BUILDING_MANAGER' : path == 'room-manager-list' ? 'FLOOR_MANAGER' : 'USER',
-                name: userQuery?.name == '' ? undefined : userQuery?.name,
-                email: userQuery?.email == '' ? undefined : userQuery?.email,
-                phone: userQuery?.phone == '' ? undefined : userQuery?.phone,
-                studentId: userQuery?.studentId == '' ? undefined : userQuery?.studentId
+            getListFeeService({
+                ...feeQuery,
+                type: path == 'electric' ? 'Electric' : path == 'water' ? 'Water' : 'Internet',
+                roomId: feeQuery?.roomId == '' ? undefined : feeQuery?.roomId
             })
                 .then((res) => {
-                    setUser(res.data);
+                    setFee(res.data);
                     setIsLoadingSearch(false);
                     setIsLoading(false);
                 })
@@ -82,14 +91,14 @@ const UserList = () => {
         }, 500);
     };
 
-    const getUserFirstLoad = () => {
+    const getFeeFirstLoad = () => {
         setIsLoadingSearch(true);
         setTimeout(() => {
-            getListUserService({
-                role: path == 'building-manager-list' ? 'BUILDING_MANAGER' : path == 'room-manager-list' ? 'FLOOR_MANAGER' : 'USER'
+            getListFeeService({
+                type: path == 'electric' ? 'Electric' : path == 'water' ? 'Water' : 'Internet'
             })
                 .then((res) => {
-                    setUser(res.data);
+                    setFee(res.data);
                     setIsLoadingSearch(false);
                     setIsLoading(false);
                 })
@@ -112,33 +121,25 @@ const UserList = () => {
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
                         <Typography variant="h4">
-                            {path == 'building-manager-list'
-                                ? 'Building managers'
-                                : path == 'room-manager-list'
-                                ? 'Room managers'
-                                : 'Students'}
+                            {path == 'electric' ? 'Electric fee' : path == 'water' ? 'Water fee' : 'Internet fee'}
                         </Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
                             <FormControl sx={{ width: { xs: '100%', md: 224 } }}>
-                                <OutlinedInput
+                                <Select
                                     size="small"
                                     id="header-search"
-                                    ref={inputRef}
-                                    startAdornment={
-                                        <InputAdornment position="start" sx={{ mr: -0.5 }}>
-                                            <SearchOutlined />
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="header-search-text"
-                                    inputProps={{
-                                        'aria-label': 'weight'
-                                    }}
-                                    placeholder={t('Enter user name')}
-                                    value={userQuery?.name}
-                                    onChange={(e) => setUserQuery({ ...userQuery, name: e.target.value })}
-                                />
+                                    value={feeQuery?.roomId ? feeQuery?.roomId : ''}
+                                    displayEmpty
+                                    inputProps={{ 'aria-label': 'Without label' }}
+                                    onChange={(e) => setFeeQuery({ ...feeQuery, roomId: e.target.value })}
+                                >
+                                    <MenuItem value={''}>All rooms</MenuItem>
+                                    {room?.map((item) => {
+                                        return <MenuItem value={item.id}>{item.name}</MenuItem>;
+                                    })}
+                                </Select>
                             </FormControl>
                             <FormControl sx={{ width: { xs: '100%', md: 224 }, ml: 3 }}>
                                 <OutlinedInput
@@ -154,53 +155,18 @@ const UserList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter user email')}
-                                    value={userQuery?.email}
-                                    onChange={(e) => setUserQuery({ ...userQuery, email: e.target.value })}
+                                    placeholder={t('Enter fee name')}
+                                    value={feeQuery?.name}
+                                    onChange={(e) => setFeeQuery({ ...feeQuery, name: e.target.value })}
                                 />
                             </FormControl>
-                            <FormControl sx={{ width: { xs: '100%', md: 224 }, ml: 3 }}>
-                                <OutlinedInput
-                                    size="small"
-                                    id="header-search"
-                                    ref={inputRef}
-                                    startAdornment={
-                                        <InputAdornment position="start" sx={{ mr: -0.5 }}>
-                                            <SearchOutlined />
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="header-search-text"
-                                    inputProps={{
-                                        'aria-label': 'weight'
-                                    }}
-                                    placeholder={t('Enter user phone')}
-                                    value={userQuery?.phone}
-                                    onChange={(e) => setUserQuery({ ...userQuery, phone: e.target.value })}
-                                />
-                            </FormControl>
-                            {path == 'student-list' && (
-                                <FormControl sx={{ width: { xs: '100%', md: 224 }, ml: 3 }}>
-                                    <OutlinedInput
-                                        size="small"
-                                        id="header-search"
-                                        ref={inputRef}
-                                        startAdornment={
-                                            <InputAdornment position="start" sx={{ mr: -0.5 }}>
-                                                <SearchOutlined />
-                                            </InputAdornment>
-                                        }
-                                        aria-describedby="header-search-text"
-                                        inputProps={{
-                                            'aria-label': 'weight'
-                                        }}
-                                        placeholder={t('Enter student id')}
-                                        value={userQuery?.studentId}
-                                        onChange={(e) => setUserQuery({ ...userQuery, studentId: e.target.value })}
-                                    />
-                                </FormControl>
-                            )}
-                            <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getUser()}>
+                            <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getFee()}>
                                 {t('Search')}
+                            </Button>
+                        </Stack>
+                        <Stack direction="row">
+                            <Button variant="contained" sx={{ mr: 3, width: '10rem' }} onClick={() => setModalAddVisible(true)}>
+                                {t('Add New Fee')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -220,46 +186,22 @@ const UserList = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Fee')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Email')}
+                                                {t('Cost')}
                                             </TableCell>
-                                            {path == 'student-list' && (
-                                                <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Room')}
-                                                </TableCell>
-                                            )}
-
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Gender')}
+                                            <TableCell width="15%" style={{ minWidth: 80 }} align="left">
+                                                {t('Deadline')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Region')}
+                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                                {t('Room')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Religion')}
-                                            </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Phone')}
-                                            </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="center">
-                                                {t('Age')}
-                                            </TableCell>
-                                            {path == 'student-list' ? (
-                                                <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Student Id')}
-                                                </TableCell>
-                                            ) : (
-                                                <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Role')}
-                                                </TableCell>
-                                            )}
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {user?.map((row, index) => (
+                                        {fee?.map((row, index) => (
                                             <TableRow hover key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                                 <TableCell align="left">{index}</TableCell>
                                                 <TableCell align="left">
@@ -274,24 +216,9 @@ const UserList = () => {
                                                         }}
                                                     />
                                                 </TableCell>
-                                                <TableCell align="left">{row?.email}</TableCell>
-                                                {path == 'student-list' && <TableCell align="left">{row?.room?.name}</TableCell>}
-                                                <TableCell align="left">{row?.gender}</TableCell>
-                                                <TableCell align="left">{row?.region}</TableCell>
-                                                <TableCell align="left">{row?.religion}</TableCell>
-                                                <TableCell align="left">{row?.phone}</TableCell>
-                                                <TableCell align="center">{row?.age}</TableCell>
-                                                {path == 'student-list' ? (
-                                                    <TableCell align="left">{row?.studentId}</TableCell>
-                                                ) : (
-                                                    <TableCell align="left">
-                                                        {row?.role == 'FLOOR_MANAGER'
-                                                            ? 'Room manager'
-                                                            : row?.role == 'BUILDING_MANAGER'
-                                                            ? 'Building Manager'
-                                                            : 'Student'}
-                                                    </TableCell>
-                                                )}
+                                                <TableCell align="left">{row?.cost}</TableCell>
+                                                <TableCell align="left">{moment(row?.deadline).format('YYYY-MM-DD')}</TableCell>
+                                                <TableCell align="left">{row?.room?.name}</TableCell>
                                                 <TableCell align="center">
                                                     <Grid container>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -303,7 +230,7 @@ const UserList = () => {
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
-                                                                onClick={() => navigate(`/user/${path}/${row?.id}`)}
+                                                                onClick={() => navigate(`/fee/${path}/${row?.id}`)}
                                                             >
                                                                 {t('Detail')}
                                                             </Button>
@@ -321,7 +248,7 @@ const UserList = () => {
                                                                 color="error"
                                                                 onClick={() => {
                                                                     setModalDeleteVisible(true);
-                                                                    setSelectedUser(row.id);
+                                                                    setSelectedFee(row.id);
                                                                 }}
                                                             >
                                                                 {t('Delete')}
@@ -333,18 +260,27 @@ const UserList = () => {
                                         ))}
                                     </TableBody>
                                 </Table>
-                                {user?.length <= 0 && <EmptyRows />}
+                                {fee?.length <= 0 && <EmptyRows />}
                             </TableContainer>
                         </Paper>
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this user?')}
+                            title={t('Delete this fee?')}
                             content={t('')}
                             textBtnBack={t('back')}
                             textBtnSubmit={t('delete')}
                             action={deleteBuilding}
                             callbackClose={callbackClose}
+                        />
+                    )}
+                    {modalAddVisible && (
+                        <AddNewFeeModal
+                            modalAddVisible={modalAddVisible}
+                            setModalAddVisible={setModalAddVisible}
+                            newFee={newFee}
+                            setNewFee={setNewFee}
+                            handleAddNewFee={handleAddNewFee}
                         />
                     )}
                 </React.Fragment>
@@ -353,4 +289,4 @@ const UserList = () => {
     );
 };
 
-export default UserList;
+export default ListFee;

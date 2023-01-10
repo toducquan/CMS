@@ -33,7 +33,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeProfile } from 'store/reducers/profile';
 import { raiseProfile } from 'store/reducers/profile';
 import { getListBuildingService } from 'services/buildingService';
+import { getListRoomService } from 'services/roomService';
 import { setBuildingList } from 'store/reducers/building';
+import { setRoomList } from 'store/reducers/room';
 import { getListUserService } from 'services/userService';
 import { setBuildingManager, setFloorManager } from 'store/reducers/manager';
 
@@ -86,6 +88,13 @@ const Profile = () => {
             getListBuildingService()
                 .then((res) => {
                     dispatch(setBuildingList({ building: res.data }));
+                })
+                .catch((err) => {
+                    console.log('err: ', err);
+                });
+            getListRoomService()
+                .then((res) => {
+                    dispatch(setRoomList({ room: res.data }));
                 })
                 .catch((err) => {
                     console.log('err: ', err);

@@ -13,7 +13,7 @@ import { Formik } from 'formik';
 import StarRequired from 'components/StarRequired';
 import { mainColor } from 'config';
 import LoadingPage from 'components/LoadingPage';
-import { getRentByIdService, updateRentByIdService } from 'services/rentService';
+import { getFeeByIdService, updateFeeByIdService } from 'services/feeService';
 import * as moment from 'moment';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -26,27 +26,28 @@ import TableRow from '@mui/material/TableRow';
 import Breakword from 'components/common/breakword/index';
 import EmptyRows from 'components/EmptyRows';
 
-const RentDetail = () => {
+const FeeDetail = () => {
     const { t } = useTranslation();
     const { id } = useParams();
     const profile = useSelector((state) => state.profile.profile);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const [rent, setRent] = useState();
+    const [fee, setFee] = useState();
     const tableRef = useRef();
     const [isLoading, setIsLoading] = useState(false);
     const [selectStudents, setSelectStudents] = useState([]);
+    const path = window.location.pathname.split('/')[2];
 
     useEffect(() => {
         setIsLoading(true);
-        getRentById();
+        getFeeById();
     }, []);
 
-    const getRentById = () => {
+    const getFeeById = () => {
         setTimeout(() => {
-            getRentByIdService(id)
+            getFeeByIdService(id)
                 .then((res) => {
-                    setRent(res.data);
+                    setFee(res.data);
                     setIsLoading(false);
                 })
                 .catch((err) => {
@@ -56,13 +57,13 @@ const RentDetail = () => {
         }, 500);
     };
     // Update user
-    const updateRent = (values) => {
+    const updateFee = (values) => {
         setIsLoading(true);
         setTimeout(() => {
-            updateRentByIdService(id, values)
+            updateFeeByIdService(id, values)
                 .then((res) => {
                     setIsLoading(false);
-                    getRentById();
+                    getFeeById();
                     dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
                 })
                 .catch((err) => {
@@ -97,20 +98,21 @@ const RentDetail = () => {
                 <React.Fragment>
                     <Box sx={{ width: '100%', mr: 2 }}>
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                            {t('Rent in detail')}
+                            {t('Fee in detail')}
                         </Typography>
                         <>
                             <Formik
                                 enableReinitialize
                                 initialValues={{
-                                    name: rent?.rent?.name,
-                                    cost: rent?.rent?.cost,
-                                    createdAt: moment(rent?.rent?.createdAt).format('YYYY-MM-DD'),
-                                    deadline: moment(rent?.rent?.deadline).format('YYYY-MM-DD')
+                                    name: fee?.fee?.name,
+                                    cost: fee?.fee?.cost,
+                                    type: fee?.fee?.type,
+                                    createdAt: moment(fee?.fee?.createdAt).format('YYYY-MM-DD'),
+                                    deadline: moment(fee?.fee?.deadline).format('YYYY-MM-DD')
                                 }}
                                 validationSchema={Yup.object().shape({})}
                                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
-                                    updateRent({
+                                    updateFee({
                                         ...values,
                                         paid: [...selectStudents]
                                     });
@@ -128,16 +130,12 @@ const RentDetail = () => {
                                                         </InputLabel>
                                                         <OutlinedInput
                                                             id="user-name"
-                                                            style={
-                                                                profile.role == 'BUILDING_MANAGER'
-                                                                    ? { backgroundColor: '', marginBottom: '1rem' }
-                                                                    : { backgroundColor: '#eee', marginBottom: '1rem' }
-                                                            }
+                                                            style={{ backgroundColor: '', marginBottom: '1rem' }}
                                                             name="name"
                                                             error={Boolean(touched.name && errors.name)}
                                                             onBlur={handleBlur}
                                                             value={values?.name}
-                                                            onChange={profile.role == 'BUILDING_MANAGER' ? handleChange : undefined}
+                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -158,6 +156,22 @@ const RentDetail = () => {
                                                         />
                                                     </Stack>
                                                 </Grid>
+                                                <Grid item xs={10}>
+                                                    <Stack spacing={1}>
+                                                        <InputLabel htmlFor="user-type" style={{ color: mainColor }}>
+                                                            {t('Type')}
+                                                            <StarRequired />
+                                                        </InputLabel>
+                                                        <OutlinedInput
+                                                            id="user-type"
+                                                            style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
+                                                            name="type"
+                                                            error={Boolean(touched.type && errors.type)}
+                                                            onBlur={handleBlur}
+                                                            value={values?.type}
+                                                        />
+                                                    </Stack>
+                                                </Grid>
                                             </Grid>
                                             <Grid xs={10} sm={9} md={8} lg={7} xl={5} spacing={3}>
                                                 <Grid item xs={10}>
@@ -168,16 +182,12 @@ const RentDetail = () => {
                                                         </InputLabel>
                                                         <OutlinedInput
                                                             id="cost"
-                                                            style={
-                                                                profile.role == 'BUILDING_MANAGER'
-                                                                    ? { backgroundColor: '', marginBottom: '1rem' }
-                                                                    : { backgroundColor: '#eee', marginBottom: '1rem' }
-                                                            }
+                                                            style={{ backgroundColor: '', marginBottom: '1rem' }}
                                                             name="cost"
                                                             error={Boolean(touched.cost && errors.cost)}
                                                             onBlur={handleBlur}
                                                             value={values?.cost}
-                                                            onChange={profile.role == 'BUILDING_MANAGER' ? handleChange : undefined}
+                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -189,17 +199,13 @@ const RentDetail = () => {
                                                         </InputLabel>
                                                         <OutlinedInput
                                                             id="deadline"
-                                                            style={
-                                                                profile.role == 'BUILDING_MANAGER'
-                                                                    ? { backgroundColor: '', marginBottom: '1rem' }
-                                                                    : { backgroundColor: '#eee', marginBottom: '1rem' }
-                                                            }
+                                                            style={{ backgroundColor: '', marginBottom: '1rem' }}
                                                             name="deadline"
                                                             type="date"
                                                             error={Boolean(touched.deadline && errors.deadline)}
                                                             onBlur={handleBlur}
                                                             value={values?.deadline}
-                                                            onChange={profile.role == 'BUILDING_MANAGER' ? handleChange : undefined}
+                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -233,7 +239,7 @@ const RentDetail = () => {
                                                         </TableRow>
                                                     </TableHead>
                                                     <TableBody>
-                                                        {rent?.studentInRent?.map((row, index) => (
+                                                        {fee?.studentInFee?.map((row, index) => (
                                                             <TableRow
                                                                 hover
                                                                 key={row.id}
@@ -271,7 +277,7 @@ const RentDetail = () => {
                                                         ))}
                                                     </TableBody>
                                                 </Table>
-                                                {rent?.studentInRent?.length <= 0 && <EmptyRows />}
+                                                {fee?.studentInFee?.length <= 0 && <EmptyRows />}
                                             </TableContainer>
                                         </Paper>
                                         <Grid container spacing={3} sx={{ mt: 1 }}>
@@ -282,7 +288,7 @@ const RentDetail = () => {
                                                         size="large"
                                                         variant="contained"
                                                         color="secondary"
-                                                        onClick={() => navigate(`/rent`)}
+                                                        onClick={() => navigate(`/fee/${path}`)}
                                                     >
                                                         {t('back')}
                                                     </Button>
@@ -314,4 +320,4 @@ const RentDetail = () => {
     );
 };
 
-export default RentDetail;
+export default FeeDetail;
