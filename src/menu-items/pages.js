@@ -1,4 +1,13 @@
-import { DashboardOutlined, HomeOutlined, UserOutlined, GroupOutlined, TransactionOutlined, FileDoneOutlined } from '@ant-design/icons';
+import {
+    DashboardOutlined,
+    HomeOutlined,
+    UserOutlined,
+    GroupOutlined,
+    TransactionOutlined,
+    FileDoneOutlined,
+    RetweetOutlined,
+    IdcardOutlined
+} from '@ant-design/icons';
 
 // icons
 const icons = {
@@ -7,7 +16,9 @@ const icons = {
     UserOutlined,
     GroupOutlined,
     TransactionOutlined,
-    FileDoneOutlined
+    FileDoneOutlined,
+    RetweetOutlined,
+    IdcardOutlined
 };
 
 // ==============================|| MENU ITEMS - EXTRA PAGES ||============================== //
@@ -38,6 +49,23 @@ const pages = {
                     title: 'Building detail',
                     type: 'item-child',
                     url: '/building/:id',
+                    breadcrumbs: true
+                }
+            ]
+        },
+        {
+            id: 'room',
+            title: 'Room',
+            type: 'item',
+            url: '/room',
+            icon: icons.GroupOutlined,
+            breadcrumbs: true,
+            children: [
+                {
+                    id: 'room-detail',
+                    title: 'Room detail',
+                    type: 'item-child',
+                    url: '/room/:id',
                     breadcrumbs: true
                 }
             ]
@@ -101,40 +129,6 @@ const pages = {
             ]
         },
         {
-            id: 'room',
-            title: 'Room',
-            type: 'item',
-            url: '/room',
-            icon: icons.GroupOutlined,
-            breadcrumbs: true,
-            children: [
-                {
-                    id: 'room-detail',
-                    title: 'Room detail',
-                    type: 'item-child',
-                    url: '/room/:id',
-                    breadcrumbs: true
-                }
-            ]
-        },
-        {
-            id: 'rent',
-            title: 'Rent',
-            type: 'item',
-            url: '/rent',
-            icon: icons.TransactionOutlined,
-            breadcrumbs: true,
-            children: [
-                {
-                    id: 'rent-detail',
-                    title: 'Students in rent',
-                    type: 'item-child',
-                    url: '/rent/:id',
-                    breadcrumbs: true
-                }
-            ]
-        },
-        {
             id: 'fee',
             title: 'Fee',
             type: 'collapse',
@@ -190,6 +184,39 @@ const pages = {
                     ]
                 }
             ]
+        },
+        {
+            id: 'rent',
+            title: 'Rent',
+            type: 'item',
+            url: '/rent',
+            icon: icons.TransactionOutlined,
+            breadcrumbs: true,
+            children: [
+                {
+                    id: 'rent-detail',
+                    title: 'Students in rent',
+                    type: 'item-child',
+                    url: '/rent/:id',
+                    breadcrumbs: true
+                }
+            ]
+        },
+        {
+            id: 'swap-room',
+            title: 'Room swap',
+            type: 'item',
+            url: '/swap-room',
+            icon: icons.RetweetOutlined,
+            breadcrumbs: true
+        },
+        {
+            id: 'aspiration',
+            title: 'Student aspirations',
+            type: 'item',
+            url: '/aspiration',
+            icon: icons.IdcardOutlined,
+            breadcrumbs: true
         }
     ]
 };

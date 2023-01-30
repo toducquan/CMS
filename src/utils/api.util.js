@@ -39,9 +39,9 @@ export const apiUtils = {
             }
         });
     },
-    delete: (uri, data) => {
+    delete: (uri) => {
         const token = getToken();
-        return httpClient.delete(uri, data, {
+        return httpClient.delete(uri, {
             headers: {
                 Authorization: 'Bearer ' + token
             }
