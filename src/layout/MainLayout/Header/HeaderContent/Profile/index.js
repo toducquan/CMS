@@ -170,7 +170,7 @@ const Profile = () => {
                 <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
                     <LogoutIcon fontSize="small" style={{ color: '#8c9297', marginBottom: '4px' }} />
                     <Typography variant="subtitle1" style={{ marginLeft: '10px' }}>
-                        Logout
+                        Đăng xuất
                     </Typography>
                 </Stack>
             </ButtonBase>

@@ -51,7 +51,7 @@ const AspirationList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Reject successfully',
+                            content: 'Từ chối thành công',
                             severity: 'success'
                         })
                     );
@@ -61,7 +61,7 @@ const AspirationList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Can not reject this aspiration',
+                            content: 'Từ chối thất bại',
                             severity: 'error'
                         })
                     );
@@ -138,7 +138,7 @@ const AspirationList = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Student aspirations</Typography>
+                        <Typography variant="h4">Nguyện vọng xếp phòng</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -156,17 +156,17 @@ const AspirationList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter name')}
+                                    placeholder={t('Nhập tên sinh viên')}
                                 />
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getBuilding()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                         <Stack direction="row">
                             {selectedAspiration?.length > 0 && (
                                 <Button variant="contained" sx={{ mr: 15, width: '6rem' }} onClick={() => approveAllSelected()}>
-                                    {t('Approve')}
+                                    {t('Duyêt')}
                                 </Button>
                             )}
                         </Stack>
@@ -185,19 +185,19 @@ const AspirationList = () => {
                                             {t('No')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 100 }} align="left">
-                                            {t('Student')}
+                                            {t('Sinh viên')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('First room')}
+                                            {t('Nguyện vọng 1')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('Second room')}
+                                            {t('Nguyện vọng 2')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('Third room')}
+                                            {t('Nguyện vọng 3')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('Create at')}
+                                            {t('Ngày tạo')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                     </TableRow>
@@ -238,7 +238,7 @@ const AspirationList = () => {
                                                         <Button
                                                             variant="contained"
                                                             sx={{
-                                                                width: '74.33px',
+                                                                width: '94.33px',
                                                                 marginLeft: { lg: '1rem' },
                                                                 height: '1.8rem',
                                                                 pt: 0.8,
@@ -250,7 +250,7 @@ const AspirationList = () => {
                                                                 setRejectAspiration(row.id);
                                                             }}
                                                         >
-                                                            {t('Reject')}
+                                                            {t('Từ chối')}
                                                         </Button>
                                                     </Grid>
                                                 </Grid>
@@ -264,7 +264,7 @@ const AspirationList = () => {
                     </Paper>
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Reject this aspiration?')}
+                            title={t('Từ chối nguyện vọng này?')}
                             content={t('')}
                             textBtnBack={t('back')}
                             textBtnSubmit={t('Reject')}

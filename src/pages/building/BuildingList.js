@@ -72,7 +72,7 @@ const BuildingList = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Buildings</Typography>
+                        <Typography variant="h4">Danh sách toà nhà</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -90,13 +90,13 @@ const BuildingList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter building name')}
+                                    placeholder={t('Nhập tên toà nhà')}
                                     value={buildingQuery?.name}
                                     onChange={(e) => setBuildingQuery({ ...buildingQuery, name: e.target.value })}
                                 />
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getBuilding()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -116,16 +116,16 @@ const BuildingList = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="20%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Tên')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Number of floors')}
+                                                {t('Số tầng')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Address')}
+                                                {t('Địa chỉ')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Manager')}
+                                                {t('Quản lí')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                         </TableRow>
@@ -155,14 +155,14 @@ const BuildingList = () => {
                                                             <Button
                                                                 variant="contained"
                                                                 sx={{
-                                                                    width: '74.33px',
+                                                                    width: '100.33px',
                                                                     marginBottom: '0.3rem',
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
                                                                 onClick={() => navigate(`/building/${row?.id}`)}
                                                             >
-                                                                {t('Detail')}
+                                                                {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -181,7 +181,7 @@ const BuildingList = () => {
                                                                     setSelectedCompany(row.id);
                                                                 }}
                                                             >
-                                                                {t('Delete')}
+                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>
@@ -196,10 +196,10 @@ const BuildingList = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this building?')}
+                            title={t('Xoá toà nhà này?')}
                             content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('delete')}
+                            textBtnBack={t('Thoát')}
+                            textBtnSubmit={t('Xoá')}
                             action={deleteBuilding}
                             callbackClose={callbackClose}
                         />

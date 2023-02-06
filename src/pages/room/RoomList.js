@@ -100,7 +100,7 @@ const RoomList = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Rooms</Typography>
+                        <Typography variant="h4">Danh sách các phòng</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -113,20 +113,20 @@ const RoomList = () => {
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setRoomQuery({ ...roomQuery, buildingId: e.target.value })}
                                 >
-                                    <MenuItem value={''}>All buildings</MenuItem>
+                                    <MenuItem value={''}>Tất cả toà nhà</MenuItem>
                                     {building?.map((item) => {
                                         return <MenuItem value={item.id}>{item.name}</MenuItem>;
                                     })}
                                 </Select>
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getRoom()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                         {profile?.role == 'BUILDING_MANAGER' && (
                             <Stack direction="row">
                                 <Button variant="contained" sx={{ mr: 3, width: '10rem' }} onClick={() => setModalAddVisible(true)}>
-                                    {t('Add New Room')}
+                                    {t('Thêm phòng mới')}
                                 </Button>
                             </Stack>
                         )}
@@ -147,22 +147,22 @@ const RoomList = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Tên phòng')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Square')}
+                                                {t('Diện tích')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Only female')}
+                                            <TableCell width="7%" style={{ minWidth: 80 }} align="left">
+                                                {t('Phòng cho nữ')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Only foreign')}
+                                            <TableCell width="7%" style={{ minWidth: 80 }} align="left">
+                                                {t('Phòng quốc tế')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="center">
-                                                {t('Max student')}
+                                                {t('Số lượng tối đa')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Manager')}
+                                                {t('Quản lí')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                         </TableRow>
@@ -184,8 +184,8 @@ const RoomList = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell align="left">{row?.square}</TableCell>
-                                                <TableCell align="center">{row?.onlyFemale ? 'Female' : '_'}</TableCell>
-                                                <TableCell align="center">{row?.onlyForeign ? 'Foreign' : '_'}</TableCell>
+                                                <TableCell align="center">{row?.onlyFemale ? 'nữ giới' : '_'}</TableCell>
+                                                <TableCell align="center">{row?.onlyForeign ? 'quốc tế' : '_'}</TableCell>
                                                 <TableCell align="center">{row?.maxStudentAllow}</TableCell>
                                                 <TableCell align="left">{row?.manager.name || '-'}</TableCell>
                                                 <TableCell align="center">
@@ -194,14 +194,14 @@ const RoomList = () => {
                                                             <Button
                                                                 variant="contained"
                                                                 sx={{
-                                                                    width: '74.33px',
+                                                                    width: '104.33px',
                                                                     marginBottom: '0.3rem',
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
                                                                 onClick={() => navigate(`/room/${row?.id}`)}
                                                             >
-                                                                {t('Detail')}
+                                                                {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -220,7 +220,7 @@ const RoomList = () => {
                                                                     setSelectedRoom(row.id);
                                                                 }}
                                                             >
-                                                                {t('Delete')}
+                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>
@@ -235,10 +235,10 @@ const RoomList = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this room?')}
+                            title={t('Xoá căn phòng này khỏi hệ thống?')}
                             content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('delete')}
+                            textBtnBack={t('Thoát')}
+                            textBtnSubmit={t('Xoá')}
                             action={deleteBuilding}
                             callbackClose={callbackClose}
                         />

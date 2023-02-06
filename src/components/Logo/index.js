@@ -11,8 +11,8 @@ import config from 'config';
 // ==============================|| MAIN LOGO ||============================== //
 
 const LogoSection = ({ sx, to }) => (
-    <ButtonBase disableRipple component={Link} to={!to ? config.defaultPath : to} sx={sx}>
-        <Logo />
+    <ButtonBase disableRipple component={Link} to={'/'} sx={sx}>
+        <img alt="hust" src="https://dongphucgiadinh.com/wp-content/uploads/2022/09/logo-dai-hoc-bach-khoa.png" width="100" />
     </ButtonBase>
 );
 

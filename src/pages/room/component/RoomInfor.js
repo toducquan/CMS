@@ -64,7 +64,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={4}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                                {t('Room name')}
+                                                {t('Tên phòng')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -90,7 +90,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={4}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="maxStudentAllow" style={{ color: mainColor }}>
-                                                {t('Max student')}
+                                                {t('Số lượng tối đa')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -109,7 +109,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={2}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="square" style={{ color: mainColor }}>
-                                                {t('Square')}
+                                                {t('Diện tích')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -135,7 +135,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={2}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="bed" style={{ color: mainColor }}>
-                                                {t('Bed')}
+                                                {t('Giường')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -162,7 +162,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={2}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="finish-time" style={{ color: mainColor }}>
-                                                {t('AC')}
+                                                {t('Điều hoà')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -189,7 +189,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={2}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="fan" style={{ color: mainColor }}>
-                                                {t('Fan')}
+                                                {t('Quạt trần')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <OutlinedInput
@@ -217,7 +217,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={4}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="foreign" style={{ color: mainColor }}>
-                                                {t('Foreign only')} <StarRequired />
+                                                {t('Phòng quốc tế')} <StarRequired />
                                             </InputLabel>
                                             <RadioGroup
                                                 row
@@ -238,7 +238,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={4}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="female" style={{ color: mainColor }}>
-                                                {t('Female only')} <StarRequired />
+                                                {t('Phòng cho nữ')} <StarRequired />
                                             </InputLabel>
                                             <RadioGroup
                                                 row
@@ -254,7 +254,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                     <Grid item xs={6}>
                                         <Stack spacing={1}>
                                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                                {t('Manager')}
+                                                {t('Quản lí')}
                                                 <StarRequired />
                                             </InputLabel>
                                             <Select
@@ -329,7 +329,7 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 color="secondary"
                                                 onClick={() => navigate(`/room`)}
                                             >
-                                                {t('Back')}
+                                                {t('Quay lại')}
                                             </Button>
                                         </AnimateButton>
                                     </Grid>

@@ -41,7 +41,7 @@ const UserDetail = () => {
             updateRoomByIdService(id, value).then((res) => {
                 getRoomById();
                 setIsLoading(false);
-                dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
             });
         }, [500]);
     };
@@ -54,7 +54,7 @@ const UserDetail = () => {
             }).then((res) => {
                 getRoomById();
                 setIsLoading(false);
-                dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                dispatch(raiseNotification({ visible: true, content: 'Update thất bại', severity: 'success' }));
             });
         }, [500]);
     };
@@ -77,8 +77,8 @@ const UserDetail = () => {
                 <TabContext value={valueTab}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '322px' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example">
-                            <Tab label={t('Room Detail')} value="1" />
-                            <Tab label={t('Students')} value="2" />
+                            <Tab label={t('Chi tiết')} value="1" />
+                            <Tab label={t('Sinh viên')} value="2" />
                         </TabList>
                     </Box>
                     {isLoading ? (

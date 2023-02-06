@@ -51,12 +51,12 @@ const UserDetail = () => {
                 .then((res) => {
                     setIsLoading(false);
                     getUserById();
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                 })
                 .catch((err) => {
                     setIsLoading(false);
                     console.log('err: ', err);
-                    dispatch(raiseNotification({ visible: true, content: 'Update failed', severity: 'error' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thất bại', severity: 'error' }));
                 });
         }, 500);
     };
@@ -69,7 +69,7 @@ const UserDetail = () => {
                 <React.Fragment>
                     <Box sx={{ width: '100%', mr: 2 }}>
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                            {t('User information')}
+                            {t('Thông tin người dùng')}
                         </Typography>
                         <>
                             <Formik
@@ -111,7 +111,7 @@ const UserDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                                            {t('User name')}
+                                                            {t('Tên họ')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -128,7 +128,7 @@ const UserDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-phone" style={{ color: mainColor }}>
-                                                            {t('Phone number')}
+                                                            {t('Số điện thoại')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -145,7 +145,7 @@ const UserDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-age" style={{ color: mainColor }}>
-                                                            {t('Age')}
+                                                            {t('Tuổi')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -162,7 +162,7 @@ const UserDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-age" style={{ color: mainColor }}>
-                                                            {t('Gender')}
+                                                            {t('Giới tính')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <RadioGroup
@@ -175,13 +175,13 @@ const UserDetail = () => {
                                                                 value={'Male'}
                                                                 name="gender"
                                                                 control={<Radio />}
-                                                                label={t('Male')}
+                                                                label={t('Nam')}
                                                             />
                                                             <FormControlLabel
                                                                 value={'Female'}
                                                                 name="gender"
                                                                 control={<Radio />}
-                                                                label={t('Female')}
+                                                                label={t('Nữ')}
                                                             />
                                                         </RadioGroup>
                                                     </Stack>
@@ -191,7 +191,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-religion" style={{ color: mainColor }}>
-                                                                    {t('Religion')}
+                                                                    {t('Tôn Giáo')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <Select
@@ -212,7 +212,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-grade" style={{ color: mainColor }}>
-                                                                    {t('Grade')}
+                                                                    {t('Năm')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <Select
@@ -237,7 +237,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-father-name" style={{ color: mainColor }}>
-                                                                    {t('Father Name')}
+                                                                    {t('Họ và tên bố')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-father-name"
@@ -252,7 +252,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-father-age" style={{ color: mainColor }}>
-                                                                    {t('Father Age')}
+                                                                    {t('Tuổi bố')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-father-age"
@@ -267,7 +267,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-father-email" style={{ color: mainColor }}>
-                                                                    {t('Father Email')}
+                                                                    {t('Email bố')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-father-email"
@@ -282,7 +282,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-father-phone" style={{ color: mainColor }}>
-                                                                    {t('Father Phone')}
+                                                                    {t('Số điện thoại bố')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-father-phone"
@@ -297,7 +297,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-father-occupation" style={{ color: mainColor }}>
-                                                                    {t('Father Occupation')}
+                                                                    {t('Nghề nghiệp của bố')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-father-occupation"
@@ -332,7 +332,7 @@ const UserDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="region" style={{ color: mainColor }}>
-                                                            {t('Region')}
+                                                            {t('Quốc gia')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -351,7 +351,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-student-id" style={{ color: mainColor }}>
-                                                                    {t('Student Id')}
+                                                                    {t('Mssv')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <OutlinedInput
@@ -367,7 +367,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-age" style={{ color: mainColor }}>
-                                                                    {t('Is Smoking')}
+                                                                    {t('Có hút thuốc?')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <RadioGroup
@@ -397,7 +397,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-student-id" style={{ color: mainColor }}>
-                                                                    {t('Role')}
+                                                                    {t('Vai trò')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <Select
@@ -408,8 +408,8 @@ const UserDetail = () => {
                                                                     style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
                                                                     value={values?.role}
                                                                 >
-                                                                    <MenuItem value={'BUILDING_MANAGER'}>Building manager</MenuItem>
-                                                                    <MenuItem value={'FLOOR_MANAGER'}>Room manager</MenuItem>
+                                                                    <MenuItem value={'BUILDING_MANAGER'}>Quản lí toà nhà</MenuItem>
+                                                                    <MenuItem value={'FLOOR_MANAGER'}>Quản lí ktx</MenuItem>
                                                                 </Select>
                                                             </Stack>
                                                         </Grid>
@@ -421,7 +421,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-room" style={{ color: mainColor }}>
-                                                                    {t('Room')}
+                                                                    {t('Kí túc xá')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <OutlinedInput
@@ -437,7 +437,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-major" style={{ color: mainColor }}>
-                                                                    {t('Major')}
+                                                                    {t('Chuyên ngành')}
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <Select
@@ -462,7 +462,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-mother-name" style={{ color: mainColor }}>
-                                                                    {t('Mother Name')}
+                                                                    {t('Họ và tên mẹ')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-mother-name"
@@ -477,7 +477,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-mother-age" style={{ color: mainColor }}>
-                                                                    {t('Mother Age')}
+                                                                    {t('Tuổi mẹ')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-mother-age"
@@ -492,7 +492,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-mother-email" style={{ color: mainColor }}>
-                                                                    {t('Mother Email')}
+                                                                    {t('Email mẹ')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-mother-email"
@@ -507,7 +507,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-mother-phone" style={{ color: mainColor }}>
-                                                                    {t('Mother Phone')}
+                                                                    {t('Số điện thoại mẹ')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-mother-phone"
@@ -522,7 +522,7 @@ const UserDetail = () => {
                                                         <Grid item xs={10}>
                                                             <Stack spacing={1}>
                                                                 <InputLabel htmlFor="user-mother-occupation" style={{ color: mainColor }}>
-                                                                    {t('Mother Occupation')}
+                                                                    {t('Nghề nghiệp của mẹ')}
                                                                 </InputLabel>
                                                                 <OutlinedInput
                                                                     id="user-mother-occupation"
@@ -548,7 +548,7 @@ const UserDetail = () => {
                                                         color="secondary"
                                                         onClick={() => navigate(`/user/${path}`)}
                                                     >
-                                                        {t('back')}
+                                                        {t('Thoát')}
                                                     </Button>
                                                 </AnimateButton>
                                             </Grid>

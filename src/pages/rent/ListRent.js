@@ -101,7 +101,7 @@ const ListRent = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">All Rents</Typography>
+                        <Typography variant="h4">Danh sách khoản thuê</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -114,7 +114,7 @@ const ListRent = () => {
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setRentQuery({ ...rentQuery, buildingId: e.target.value })}
                                 >
-                                    <MenuItem value={''}>All buildings</MenuItem>
+                                    <MenuItem value={''}>Tất cả toà nhà</MenuItem>
                                     {building?.map((item) => {
                                         return <MenuItem value={item.id}>{item.name}</MenuItem>;
                                     })}
@@ -134,7 +134,7 @@ const ListRent = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter rent name')}
+                                    placeholder={t('Nhập tên khoản thuê')}
                                     value={rentQuery?.name}
                                     onChange={(e) => setRentQuery({ ...rentQuery, name: e.target.value })}
                                 />
@@ -146,7 +146,7 @@ const ListRent = () => {
                         {profile?.role == 'BUILDING_MANAGER' && (
                             <Stack direction="row">
                                 <Button variant="contained" sx={{ mr: 3, width: '10rem' }} onClick={() => setModalAddVisible(true)}>
-                                    {t('Add New Rent')}
+                                    {t('Thêm khoản thuê')}
                                 </Button>
                             </Stack>
                         )}
@@ -167,16 +167,16 @@ const ListRent = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                {t('Rent')}
+                                                {t('Khoản thuê')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Cost')}
+                                                {t('Phải thu')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                                {t('Deadline')}
+                                                {t('Thời hạn')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Building')}
+                                                {t('Toà nhà')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                         </TableRow>
@@ -206,14 +206,14 @@ const ListRent = () => {
                                                             <Button
                                                                 variant="contained"
                                                                 sx={{
-                                                                    width: '74.33px',
+                                                                    width: '94.33px',
                                                                     marginBottom: '0.3rem',
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
                                                                 onClick={() => navigate(`/rent/${row?.id}`)}
                                                             >
-                                                                {t('Detail')}
+                                                                {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -232,7 +232,7 @@ const ListRent = () => {
                                                                     setSelectedRent(row.id);
                                                                 }}
                                                             >
-                                                                {t('Delete')}
+                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>
@@ -247,10 +247,10 @@ const ListRent = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this rent?')}
+                            title={t('Xác nhận xoá khoản thuê?')}
                             content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('delete')}
+                            textBtnBack={t('Thoát')}
+                            textBtnSubmit={t('Xoá')}
                             action={deleteBuilding}
                             callbackClose={callbackClose}
                         />

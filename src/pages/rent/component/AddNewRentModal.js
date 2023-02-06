@@ -35,12 +35,12 @@ const AddNewRentModal = ({ modalAddVisible, setModalAddVisible, newRent, setNewR
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h5" component="h2">
-                        Create New Rent
+                        Thêm mới khoản thuê
                     </Typography>
                     <Grid container sx={{ mt: 2.5 }}>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Rent name')}
+                                {t('Tên khoản thuê')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -50,7 +50,7 @@ const AddNewRentModal = ({ modalAddVisible, setModalAddVisible, newRent, setNewR
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Cost')}
+                                {t('Phải thu')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -60,7 +60,7 @@ const AddNewRentModal = ({ modalAddVisible, setModalAddVisible, newRent, setNewR
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Building')}
+                                {t('Toà nhà')}
                             </InputLabel>
                             <Select
                                 size="small"
@@ -84,7 +84,7 @@ const AddNewRentModal = ({ modalAddVisible, setModalAddVisible, newRent, setNewR
                                     color="secondary"
                                     onClick={() => setModalAddVisible(false)}
                                 >
-                                    Back
+                                    Thoát
                                 </Button>
                             </AnimateButton>
                         </Grid>

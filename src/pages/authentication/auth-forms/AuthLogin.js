@@ -45,8 +45,8 @@ const AuthLogin = () => {
                     password: 'rewq1234'
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().trim().email(t('Email is not valid')).required(t('Email is require')),
-                    password: Yup.string().required(t('Password is require'))
+                    email: Yup.string().trim().email(t('Email không hợp lệ')).required(t('Email không được để trống')),
+                    password: Yup.string().required(t('Password không được để trống'))
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     setLoading(true);
@@ -70,7 +70,7 @@ const AuthLogin = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="email-login">
-                                        {t('Email Address')}
+                                        {t('Địa chỉ email')}
                                         <StarRequired />
                                     </InputLabel>
 
@@ -81,7 +81,7 @@ const AuthLogin = () => {
                                         name="email"
                                         onBlur={handleBlur}
                                         onChange={handleChange}
-                                        placeholder={t('Enter please')}
+                                        placeholder={t('Nhập email')}
                                         fullWidth
                                         error={Boolean(touched.email && errors.email)}
                                     />
@@ -95,7 +95,7 @@ const AuthLogin = () => {
                             <Grid item xs={12}>
                                 <Stack spacing={1}>
                                     <InputLabel htmlFor="password-login">
-                                        {t('Password')}
+                                        {t('Mật khẩu')}
                                         <StarRequired />
                                     </InputLabel>
                                     <OutlinedInput
@@ -120,7 +120,7 @@ const AuthLogin = () => {
                                                 </IconButton>
                                             </InputAdornment>
                                         }
-                                        placeholder={t('Enter please')}
+                                        placeholder={t('Nhập mật khẩu')}
                                     />
                                     {touched.password && errors.password && (
                                         <FormHelperText error id="standard-weight-helper-text-password-login">
@@ -146,7 +146,7 @@ const AuthLogin = () => {
                                     variant="contained"
                                     color="primary"
                                 >
-                                    Login
+                                    Đăng nhập
                                 </LoadingButton>
                             </Grid>
                             {/* <Grid item xs={12}>

@@ -38,7 +38,7 @@ const pages = {
         },
         {
             id: 'building',
-            title: 'Building',
+            title: 'Toà nhà',
             type: 'item',
             url: '/building',
             icon: icons.HomeOutlined,
@@ -55,7 +55,7 @@ const pages = {
         },
         {
             id: 'room',
-            title: 'Room',
+            title: 'Phòng KTX',
             type: 'item',
             url: '/room',
             icon: icons.GroupOutlined,
@@ -63,7 +63,7 @@ const pages = {
             children: [
                 {
                     id: 'room-detail',
-                    title: 'Room detail',
+                    title: 'Chi tiết phỏng',
                     type: 'item-child',
                     url: '/room/:id',
                     breadcrumbs: true
@@ -73,21 +73,21 @@ const pages = {
 
         {
             id: 'user',
-            title: 'User',
+            title: 'Người dùng',
             type: 'collapse',
             url: '/user',
             icon: icons.UserOutlined,
             children: [
                 {
                     id: 'building-manager-list',
-                    title: 'Building Manager List',
+                    title: 'Quản lý toà nhà',
                     type: 'item',
                     url: '/user/building-manager-list',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'building-manager-detail',
-                            title: 'Building Manager Detail',
+                            title: 'Thông tin chi tiết',
                             type: 'item-child',
                             url: '/user/building-manager-list/:id',
                             breadcrumbs: true
@@ -96,14 +96,14 @@ const pages = {
                 },
                 {
                     id: 'room-manager-list',
-                    title: 'Room Manager List',
+                    title: 'Quản lí phòng ktx',
                     type: 'item',
                     url: '/user/room-manager-list',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'room-manager-detail',
-                            title: 'Room Manager Detail',
+                            title: 'Thông tin chi tiết',
                             type: 'item-child',
                             url: '/user/room-manager-list/:id',
                             breadcrumbs: true
@@ -112,14 +112,14 @@ const pages = {
                 },
                 {
                     id: 'student-list',
-                    title: 'Student List',
+                    title: 'Sinh viên',
                     type: 'item',
                     url: '/user/student-list',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'student-detail',
-                            title: 'Student Detail',
+                            title: 'Thông tin chi tiết',
                             type: 'item-child',
                             url: '/user/student-list/:id',
                             breadcrumbs: true
@@ -130,21 +130,21 @@ const pages = {
         },
         {
             id: 'fee',
-            title: 'Fee',
+            title: 'Các khoản phí',
             type: 'collapse',
             url: '/fee',
             icon: icons.FileDoneOutlined,
             children: [
                 {
                     id: 'water-fee',
-                    title: 'Water Fee',
+                    title: 'Tiền nước',
                     type: 'item',
                     url: '/fee/water',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'water-fee-detail',
-                            title: 'Water Fee Detail',
+                            title: 'Chi tiết khoản thu',
                             type: 'item-child',
                             url: '/fee/water/:id',
                             breadcrumbs: true
@@ -153,14 +153,14 @@ const pages = {
                 },
                 {
                     id: 'electric-fee',
-                    title: 'Electric Fee',
+                    title: 'Tiền điện',
                     type: 'item',
                     url: '/fee/electric',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'electric-fee-detail',
-                            title: 'Electric Fee Detail',
+                            title: 'Chi tiết khoản thu',
                             type: 'item-child',
                             url: '/fee/electric/:id',
                             breadcrumbs: true
@@ -169,14 +169,14 @@ const pages = {
                 },
                 {
                     id: 'internet-fee',
-                    title: 'Internet Fee',
+                    title: 'Tiền mạng',
                     type: 'item',
                     url: '/fee/internet',
                     breadcrumbs: true,
                     children: [
                         {
                             id: 'internet-fee-detail',
-                            title: 'Internet Fee Detail',
+                            title: 'Chi tiết khoản thu',
                             type: 'item-child',
                             url: '/fee/internet/:id',
                             breadcrumbs: true
@@ -187,7 +187,7 @@ const pages = {
         },
         {
             id: 'rent',
-            title: 'Rent',
+            title: 'Tiền thuê phòng',
             type: 'item',
             url: '/rent',
             icon: icons.TransactionOutlined,
@@ -195,7 +195,7 @@ const pages = {
             children: [
                 {
                     id: 'rent-detail',
-                    title: 'Students in rent',
+                    title: 'Chi tiết khoản thu',
                     type: 'item-child',
                     url: '/rent/:id',
                     breadcrumbs: true
@@ -204,7 +204,7 @@ const pages = {
         },
         {
             id: 'swap-room',
-            title: 'Room swap',
+            title: 'Danh sách đổi phòng',
             type: 'item',
             url: '/swap-room',
             icon: icons.RetweetOutlined,
@@ -212,7 +212,7 @@ const pages = {
         },
         {
             id: 'aspiration',
-            title: 'Student aspirations',
+            title: 'Danh sách nguyện vọng',
             type: 'item',
             url: '/aspiration',
             icon: icons.IdcardOutlined,

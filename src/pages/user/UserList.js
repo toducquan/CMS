@@ -113,10 +113,10 @@ const UserList = () => {
                     <Grid item sx={{ mt: 2, mb: 2 }}>
                         <Typography variant="h4">
                             {path == 'building-manager-list'
-                                ? 'Building managers'
+                                ? 'Danh sách quản lí toà nhà'
                                 : path == 'room-manager-list'
-                                ? 'Room managers'
-                                : 'Students'}
+                                ? 'Danh sách quản lí ktc'
+                                : 'Sinh viên'}
                         </Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
@@ -135,7 +135,7 @@ const UserList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter user name')}
+                                    placeholder={t('Nhập tên')}
                                     value={userQuery?.name}
                                     onChange={(e) => setUserQuery({ ...userQuery, name: e.target.value })}
                                 />
@@ -154,7 +154,7 @@ const UserList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter user email')}
+                                    placeholder={t('Nhập email')}
                                     value={userQuery?.email}
                                     onChange={(e) => setUserQuery({ ...userQuery, email: e.target.value })}
                                 />
@@ -173,7 +173,7 @@ const UserList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter user phone')}
+                                    placeholder={t('Nhập số điện thoại')}
                                     value={userQuery?.phone}
                                     onChange={(e) => setUserQuery({ ...userQuery, phone: e.target.value })}
                                 />
@@ -193,14 +193,14 @@ const UserList = () => {
                                         inputProps={{
                                             'aria-label': 'weight'
                                         }}
-                                        placeholder={t('Enter student id')}
+                                        placeholder={t('Nhập mssv')}
                                         value={userQuery?.studentId}
                                         onChange={(e) => setUserQuery({ ...userQuery, studentId: e.target.value })}
                                     />
                                 </FormControl>
                             )}
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getUser()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -220,39 +220,39 @@ const UserList = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                {t('Name')}
+                                                {t('Tên')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
                                                 {t('Email')}
                                             </TableCell>
                                             {path == 'student-list' && (
                                                 <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Room')}
+                                                    {t('Phòng')}
                                                 </TableCell>
                                             )}
 
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Gender')}
+                                                {t('Giới tính')}
                                             </TableCell>
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Region')}
+                                                {t('Quốc gia')}
                                             </TableCell>
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Religion')}
+                                                {t('Tôn giáo')}
                                             </TableCell>
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
-                                                {t('Phone')}
+                                                {t('Số điện thoại')}
                                             </TableCell>
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="center">
-                                                {t('Age')}
+                                                {t('Tuổi')}
                                             </TableCell>
                                             {path == 'student-list' ? (
                                                 <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Student Id')}
+                                                    {t('Mssv')}
                                                 </TableCell>
                                             ) : (
                                                 <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                    {t('Role')}
+                                                    {t('Vai trò')}
                                                 </TableCell>
                                             )}
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
@@ -276,8 +276,8 @@ const UserList = () => {
                                                 </TableCell>
                                                 <TableCell align="left">{row?.email}</TableCell>
                                                 {path == 'student-list' && <TableCell align="left">{row?.room?.name}</TableCell>}
-                                                <TableCell align="left">{row?.gender}</TableCell>
-                                                <TableCell align="left">{row?.region}</TableCell>
+                                                <TableCell align="left">{row?.gender == 'Male' ? 'Nam' : 'Nữ'}</TableCell>
+                                                <TableCell align="left">{row?.region == 'VietNam' ? 'Việt Nam' : 'Quốc tế'}</TableCell>
                                                 <TableCell align="left">{row?.religion}</TableCell>
                                                 <TableCell align="left">{row?.phone}</TableCell>
                                                 <TableCell align="center">{row?.age}</TableCell>
@@ -286,10 +286,10 @@ const UserList = () => {
                                                 ) : (
                                                     <TableCell align="left">
                                                         {row?.role == 'FLOOR_MANAGER'
-                                                            ? 'Room manager'
+                                                            ? 'Quản lí ktx'
                                                             : row?.role == 'BUILDING_MANAGER'
-                                                            ? 'Building Manager'
-                                                            : 'Student'}
+                                                            ? 'Quản lí toà nhà'
+                                                            : 'Sinh viên'}
                                                     </TableCell>
                                                 )}
                                                 <TableCell align="center">
@@ -298,14 +298,14 @@ const UserList = () => {
                                                             <Button
                                                                 variant="contained"
                                                                 sx={{
-                                                                    width: '74.33px',
+                                                                    width: '90.33px',
                                                                     marginBottom: '0.3rem',
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
                                                                 onClick={() => navigate(`/user/${path}/${row?.id}`)}
                                                             >
-                                                                {t('Detail')}
+                                                                {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -324,7 +324,7 @@ const UserList = () => {
                                                                     setSelectedUser(row.id);
                                                                 }}
                                                             >
-                                                                {t('Delete')}
+                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>

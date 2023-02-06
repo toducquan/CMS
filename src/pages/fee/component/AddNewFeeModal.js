@@ -35,19 +35,19 @@ const AddNewFeeModal = ({ modalAddVisible, setModalAddVisible, newFee, setNewFee
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h5" component="h2">
-                        Create New Fee
+                        Tạo khoản phí mới
                     </Typography>
                     <Grid container sx={{ mt: 2.5 }}>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Fee name')}
+                                {t('Tên khoản phí')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput sx={{ width: '80%', my: 1 }} onChange={(e) => setNewFee({ ...newFee, name: e.target.value })} />
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Cost')}
+                                {t('Phải thu')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -57,7 +57,7 @@ const AddNewFeeModal = ({ modalAddVisible, setModalAddVisible, newFee, setNewFee
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Room')}
+                                {t('Phòng')}
                             </InputLabel>
                             <Select
                                 size="small"
@@ -71,16 +71,16 @@ const AddNewFeeModal = ({ modalAddVisible, setModalAddVisible, newFee, setNewFee
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Type')}
+                                {t('Loại')}
                             </InputLabel>
                             <Select
                                 size="small"
                                 sx={{ width: '80%', my: 1 }}
                                 onChange={(e) => setNewFee({ ...newFee, type: e.target.value })}
                             >
-                                <MenuItem value={'Electric'}>Electric</MenuItem>
-                                <MenuItem value={'Water'}>Water</MenuItem>
-                                <MenuItem value={'Internet'}>Internet</MenuItem>
+                                <MenuItem value={'Electric'}>Tiền điện</MenuItem>
+                                <MenuItem value={'Water'}>Tiền nước</MenuItem>
+                                <MenuItem value={'Internet'}>Tiền mạng</MenuItem>
                             </Select>
                         </Grid>
                     </Grid>
@@ -95,7 +95,7 @@ const AddNewFeeModal = ({ modalAddVisible, setModalAddVisible, newFee, setNewFee
                                     color="secondary"
                                     onClick={() => setModalAddVisible(false)}
                                 >
-                                    Back
+                                    Thoát
                                 </Button>
                             </AnimateButton>
                         </Grid>

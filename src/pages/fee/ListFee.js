@@ -121,7 +121,7 @@ const ListFee = () => {
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
                         <Typography variant="h4">
-                            {path == 'electric' ? 'Electric fee' : path == 'water' ? 'Water fee' : 'Internet fee'}
+                            {path == 'electric' ? 'Tiền điện' : path == 'water' ? 'Tiền nước' : 'Tiền mạng'}
                         </Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
@@ -135,7 +135,7 @@ const ListFee = () => {
                                     inputProps={{ 'aria-label': 'Without label' }}
                                     onChange={(e) => setFeeQuery({ ...feeQuery, roomId: e.target.value })}
                                 >
-                                    <MenuItem value={''}>All rooms</MenuItem>
+                                    <MenuItem value={''}>Tất cả phòng</MenuItem>
                                     {room?.map((item) => {
                                         return <MenuItem value={item.id}>{item.name}</MenuItem>;
                                     })}
@@ -155,18 +155,18 @@ const ListFee = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter fee name')}
+                                    placeholder={t('Tên khoản phí')}
                                     value={feeQuery?.name}
                                     onChange={(e) => setFeeQuery({ ...feeQuery, name: e.target.value })}
                                 />
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getFee()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                         <Stack direction="row">
                             <Button variant="contained" sx={{ mr: 3, width: '10rem' }} onClick={() => setModalAddVisible(true)}>
-                                {t('Add New Fee')}
+                                {t('Thêm khoản phí')}
                             </Button>
                         </Stack>
                     </Stack>
@@ -186,16 +186,16 @@ const ListFee = () => {
                                                 {t('No')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                {t('Fee')}
+                                                {t('Tên phí')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Cost')}
+                                                {t('Phải thu')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                                {t('Deadline')}
+                                                {t('Thời hạn')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                {t('Room')}
+                                                {t('Phòng')}
                                             </TableCell>
                                             <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                         </TableRow>
@@ -225,14 +225,14 @@ const ListFee = () => {
                                                             <Button
                                                                 variant="contained"
                                                                 sx={{
-                                                                    width: '74.33px',
+                                                                    width: '90.33px',
                                                                     marginBottom: '0.3rem',
                                                                     height: '1.8rem',
                                                                     pt: 0.8
                                                                 }}
                                                                 onClick={() => navigate(`/fee/${path}/${row?.id}`)}
                                                             >
-                                                                {t('Detail')}
+                                                                {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
                                                         <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
@@ -251,7 +251,7 @@ const ListFee = () => {
                                                                     setSelectedFee(row.id);
                                                                 }}
                                                             >
-                                                                {t('Delete')}
+                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>
@@ -266,10 +266,10 @@ const ListFee = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Delete this fee?')}
+                            title={t('Xoá khoản phí?')}
                             content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('delete')}
+                            textBtnBack={t('Thoát')}
+                            textBtnSubmit={t('Xoá')}
                             action={deleteBuilding}
                             callbackClose={callbackClose}
                         />

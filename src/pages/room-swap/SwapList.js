@@ -51,7 +51,7 @@ const SwapList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Reject successfully',
+                            content: 'Từ chối thành công',
                             severity: 'success'
                         })
                     );
@@ -61,7 +61,7 @@ const SwapList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Can not reject this request',
+                            content: 'Từ chối thất bại',
                             severity: 'error'
                         })
                     );
@@ -138,7 +138,7 @@ const SwapList = () => {
             ) : (
                 <React.Fragment>
                     <Grid item sx={{ mt: 2, mb: 2 }}>
-                        <Typography variant="h4">Swap room requests</Typography>
+                        <Typography variant="h4">Yêu cầu đổi phòng</Typography>
                     </Grid>
                     <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
                         <Stack direction="row">
@@ -156,17 +156,17 @@ const SwapList = () => {
                                     inputProps={{
                                         'aria-label': 'weight'
                                     }}
-                                    placeholder={t('Enter name')}
+                                    placeholder={t('Nhập tên')}
                                 />
                             </FormControl>
                             <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getBuilding()}>
-                                {t('Search')}
+                                {t('Tìm kiếm')}
                             </Button>
                         </Stack>
                         <Stack direction="row">
                             {selectedRequest?.length > 0 && (
                                 <Button variant="contained" sx={{ mr: 15, width: '6rem' }} onClick={() => approveAllSelected()}>
-                                    {t('Approve')}
+                                    {t('Duyệt')}
                                 </Button>
                             )}
                         </Stack>
@@ -185,19 +185,19 @@ const SwapList = () => {
                                             {t('No')}
                                         </TableCell>
                                         <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                            {t('Request user')}
+                                            {t('Người yêu cầu')}
                                         </TableCell>
                                         <TableCell width="20%" style={{ minWidth: 80 }} align="left">
-                                            {t('Room')}
+                                            {t('Phòng')}
                                         </TableCell>
                                         <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                            {t('Receive User')}
+                                            {t('Người được đổi')}
                                         </TableCell>
                                         <TableCell width="20%" style={{ minWidth: 80 }} align="left">
-                                            {t('Room')}
+                                            {t('Phòng')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 80 }} align="left">
-                                            {t('Create at')}
+                                            {t('Ngày tạo')}
                                         </TableCell>
                                         <TableCell width="15%" style={{ minWidth: 170 }} align="center"></TableCell>
                                     </TableRow>
@@ -238,7 +238,7 @@ const SwapList = () => {
                                                         <Button
                                                             variant="contained"
                                                             sx={{
-                                                                width: '74.33px',
+                                                                width: '94.33px',
                                                                 marginLeft: { lg: '1rem' },
                                                                 height: '1.8rem',
                                                                 pt: 0.8,
@@ -250,7 +250,7 @@ const SwapList = () => {
                                                                 setRejectRequest(row.id);
                                                             }}
                                                         >
-                                                            {t('Reject')}
+                                                            {t('Từ chối')}
                                                         </Button>
                                                     </Grid>
                                                 </Grid>
@@ -264,10 +264,10 @@ const SwapList = () => {
                     </Paper>
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Reject this request?')}
+                            title={t('Từ chối nguyện vọng đổi phòng?')}
                             content={t('')}
-                            textBtnBack={t('back')}
-                            textBtnSubmit={t('Reject')}
+                            textBtnBack={t('Thoát')}
+                            textBtnSubmit={t('Từ chối')}
                             action={deleteRequest}
                             callbackClose={callbackClose}
                         />

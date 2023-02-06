@@ -37,12 +37,12 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h5" component="h2">
-                        Create Room
+                        Thêm phòng mới
                     </Typography>
                     <Grid container sx={{ mt: 2.5 }}>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Room name')}
+                                {t('Tên phòng')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -52,7 +52,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Square')}
+                                {t('Diện tích')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -62,7 +62,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Max student allow')}
+                                {t('Số lượng sinh viên tối đa')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -72,7 +72,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Number of AC')}
+                                {t('Số điều hoà')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -82,7 +82,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Number of bed')}
+                                {t('Số giường')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -92,7 +92,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Number of fan')}
+                                {t('Số lượng quạt')}
                                 <StarRequired />
                             </InputLabel>
                             <OutlinedInput
@@ -102,7 +102,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Foreign only')}
+                                {t('Dành cho quốc tế')}
                             </InputLabel>
                             <RadioGroup
                                 row
@@ -113,25 +113,13 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                                     })
                                 }
                             >
-                                <FormControlLabel
-                                    value={true}
-                                    id="avaiable1"
-                                    name="avaiable"
-                                    control={<Radio />}
-                                    label={t('Foreign only')}
-                                />
-                                <FormControlLabel
-                                    value={false}
-                                    id="avaiable2"
-                                    name="avaiable"
-                                    control={<Radio />}
-                                    label={t('Not foreign only')}
-                                />
+                                <FormControlLabel value={true} id="avaiable1" name="avaiable" control={<Radio />} label={t('Có')} />
+                                <FormControlLabel value={false} id="avaiable2" name="avaiable" control={<Radio />} label={t('Không')} />
                             </RadioGroup>
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Female only')}
+                                {t('Dành cho nữ')}
                             </InputLabel>
                             <RadioGroup
                                 row
@@ -142,25 +130,13 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                                     })
                                 }
                             >
-                                <FormControlLabel
-                                    value={true}
-                                    id="avaiable1"
-                                    name="avaiable"
-                                    control={<Radio />}
-                                    label={t('Female only')}
-                                />
-                                <FormControlLabel
-                                    value={false}
-                                    id="avaiable2"
-                                    name="avaiable"
-                                    control={<Radio />}
-                                    label={t('Not female only')}
-                                />
+                                <FormControlLabel value={true} id="avaiable1" name="avaiable" control={<Radio />} label={t('Có')} />
+                                <FormControlLabel value={false} id="avaiable2" name="avaiable" control={<Radio />} label={t('Không')} />
                             </RadioGroup>
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Manager')}
+                                {t('Quản lí')}
                             </InputLabel>
                             <Select
                                 size="small"
@@ -177,7 +153,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Building')}
+                                {t('Toà nhà')}
                             </InputLabel>
                             <Select
                                 size="small"
@@ -201,14 +177,14 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                                     color="secondary"
                                     onClick={() => setModalAddVisible(false)}
                                 >
-                                    Back
+                                    Thoát
                                 </Button>
                             </AnimateButton>
                         </Grid>
                         <Grid item xs={3} style={{ paddingLeft: 0 }}>
                             <AnimateButton>
                                 <Button disableElevation size="large" type="submit" variant="contained" onClick={handleAddNewRoom}>
-                                    Submit
+                                    Thêm
                                 </Button>
                             </AnimateButton>
                         </Grid>

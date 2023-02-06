@@ -64,7 +64,7 @@ const FeeDetail = () => {
                 .then((res) => {
                     setIsLoading(false);
                     getFeeById();
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                 })
                 .catch((err) => {
                     setIsLoading(false);
@@ -98,7 +98,7 @@ const FeeDetail = () => {
                 <React.Fragment>
                     <Box sx={{ width: '100%', mr: 2 }}>
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                            {t('Fee in detail')}
+                            {t('Chi tiết khoản phí')}
                         </Typography>
                         <>
                             <Formik
@@ -125,7 +125,7 @@ const FeeDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                                            {t('Name')}
+                                                            {t('Tên khoản phí')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -142,7 +142,7 @@ const FeeDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-created-at" style={{ color: mainColor }}>
-                                                            {t('Create at')}
+                                                            {t('Thời gian tạo')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -159,7 +159,7 @@ const FeeDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-type" style={{ color: mainColor }}>
-                                                            {t('Type')}
+                                                            {t('Loại')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -177,7 +177,7 @@ const FeeDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="cost" style={{ color: mainColor }}>
-                                                            {t('Cost')}
+                                                            {t('Phải thu')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -194,7 +194,7 @@ const FeeDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="deadline" style={{ color: mainColor }}>
-                                                            {t('Deadline')}
+                                                            {t('Thời hạn')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -225,16 +225,16 @@ const FeeDetail = () => {
                                                                 {t('No')}
                                                             </TableCell>
                                                             <TableCell width="10%" style={{ minWidth: 100 }} align="left">
-                                                                {t('Name')}
+                                                                {t('Tên họ')}
                                                             </TableCell>
                                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
                                                                 {t('Email')}
                                                             </TableCell>
                                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                                {t('Phone')}
+                                                                {t('Số điện thoại')}
                                                             </TableCell>
                                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
-                                                                {t('Paid')}
+                                                                {t('Trạng thái')}
                                                             </TableCell>
                                                         </TableRow>
                                                     </TableHead>
@@ -272,7 +272,7 @@ const FeeDetail = () => {
                                                                 </TableCell>
                                                                 <TableCell align="left">{row?.student?.email}</TableCell>
                                                                 <TableCell align="left">{row?.student?.phone}</TableCell>
-                                                                <TableCell align="left">{row?.paid ? 'Done' : '_'}</TableCell>
+                                                                <TableCell align="left">{row?.paid ? 'Xong' : '_'}</TableCell>
                                                             </TableRow>
                                                         ))}
                                                     </TableBody>
@@ -290,7 +290,7 @@ const FeeDetail = () => {
                                                         color="secondary"
                                                         onClick={() => navigate(`/fee/${path}`)}
                                                     >
-                                                        {t('back')}
+                                                        {t('Thoát')}
                                                     </Button>
                                                 </AnimateButton>
                                             </Grid>

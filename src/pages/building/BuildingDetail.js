@@ -53,12 +53,12 @@ const BuildingDetail = () => {
                 .then((res) => {
                     setIsLoading(false);
                     getBuildingById();
-                    dispatch(raiseNotification({ visible: true, content: 'Update successfully', severity: 'success' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update thành công', severity: 'success' }));
                 })
                 .catch((err) => {
                     setIsLoading(false);
                     console.log('err: ', err);
-                    dispatch(raiseNotification({ visible: true, content: 'Update failed', severity: 'error' }));
+                    dispatch(raiseNotification({ visible: true, content: 'Update không thành công', severity: 'error' }));
                 });
         }, 500);
     };
@@ -71,7 +71,7 @@ const BuildingDetail = () => {
                 <React.Fragment>
                     <Box sx={{ width: '100%', mr: 2 }}>
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
-                            {t('Building information')}
+                            {t('Thông tin toà nhà')}
                         </Typography>
                         <img src="http://ctsv.hust.edu.vn/img/BK.jpg" alt="hust" width={200} style={{ width: 200, marginBottom: 20 }} />
                         <>
@@ -94,7 +94,7 @@ const BuildingDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                                            {t('Building name')}
+                                                            {t('Tên toà nhà')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -124,7 +124,7 @@ const BuildingDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="address" style={{ color: mainColor }}>
-                                                            {t('Address')}
+                                                            {t('Địa chỉ')}
                                                         </InputLabel>
                                                         <OutlinedInput
                                                             id="address"
@@ -137,7 +137,7 @@ const BuildingDetail = () => {
                                                 </Grid>
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
-                                                        <InputLabel style={{ color: mainColor }}>{t('Manager')}</InputLabel>
+                                                        <InputLabel style={{ color: mainColor }}>{t('Người quản lí')}</InputLabel>
                                                         <OutlinedInput
                                                             id="manager"
                                                             style={{ marginBottom: '1rem', backgroundColor: '#eee' }}
@@ -149,7 +149,7 @@ const BuildingDetail = () => {
                                                 <Grid item xs={10}>
                                                     <Stack spacing={1}>
                                                         <InputLabel htmlFor="number-of-floors" style={{ color: mainColor }}>
-                                                            {t('Number of floors')}
+                                                            {t('Số tầng')}
                                                             <StarRequired />
                                                         </InputLabel>
                                                         <OutlinedInput
@@ -179,7 +179,7 @@ const BuildingDetail = () => {
                                             </Grid>
                                             <Grid xs={10} sm={9} md={8} lg={7} xl={5} spacing={3}>
                                                 <InputLabel htmlFor="number-of-floors" style={{ color: mainColor, marginBottom: '5px' }}>
-                                                    Room
+                                                    Danh sách các phòng
                                                 </InputLabel>
                                                 <Grid container spacing={3}>
                                                     {building?.rooms?.map((item) => {
@@ -212,7 +212,7 @@ const BuildingDetail = () => {
                                                         color="secondary"
                                                         onClick={() => navigate(`/building`)}
                                                     >
-                                                        {t('back')}
+                                                        {t('Quay lại')}
                                                     </Button>
                                                 </AnimateButton>
                                             </Grid>
