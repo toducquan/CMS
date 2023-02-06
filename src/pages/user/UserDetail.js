@@ -71,7 +71,6 @@ const UserDetail = () => {
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
                             {t('User information')}
                         </Typography>
-                        <img src="http://ctsv.hust.edu.vn/img/BK.jpg" alt="hust" width={200} style={{ width: 200, marginBottom: 20 }} />
                         <>
                             <Formik
                                 enableReinitialize
@@ -216,14 +215,23 @@ const UserDetail = () => {
                                                                     {t('Grade')}
                                                                     <StarRequired />
                                                                 </InputLabel>
-                                                                <OutlinedInput
-                                                                    id="user-grade"
+                                                                <Select
+                                                                    id="grade-login"
+                                                                    type="grade"
                                                                     style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
+                                                                    value={values.grade}
                                                                     name="grade"
-                                                                    error={Boolean(touched.grade && errors.grade)}
                                                                     onBlur={handleBlur}
-                                                                    value={values?.grade}
-                                                                />
+                                                                    onChange={handleChange}
+                                                                    fullWidth
+                                                                    error={Boolean(touched.grade && errors.grade)}
+                                                                >
+                                                                    <MenuItem value={'first'}>Năm nhất</MenuItem>
+                                                                    <MenuItem value={'second'}>Năm hai</MenuItem>
+                                                                    <MenuItem value={'third'}>Năm ba</MenuItem>
+                                                                    <MenuItem value={'fouth'}>Năm bốn</MenuItem>
+                                                                    <MenuItem value={'fifth'}>Năm năm</MenuItem>
+                                                                </Select>
                                                             </Stack>
                                                         </Grid>
                                                         <Grid item xs={10}>
@@ -433,16 +441,21 @@ const UserDetail = () => {
                                                                     <StarRequired />
                                                                 </InputLabel>
                                                                 <Select
-                                                                    id="user-major"
-                                                                    name="major"
+                                                                    fullWidth
                                                                     error={Boolean(touched.major && errors.major)}
-                                                                    onBlur={handleBlur}
+                                                                    id="major-signup"
                                                                     style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
-                                                                    value={values?.major}
+                                                                    type="major"
+                                                                    value={values.major}
+                                                                    name="major"
+                                                                    onBlur={handleBlur}
+                                                                    onChange={handleChange}
+                                                                    inputProps={{}}
                                                                 >
-                                                                    <MenuItem value={'Khoa hoc may tinh'}>Khoa hoc may tinh</MenuItem>
-                                                                    <MenuItem value={'Ki thuat may tinh'}>Ki thuat may tinh</MenuItem>
-                                                                    <MenuItem value={'Cong nghe thong tin'}>Cong nghe thong tin</MenuItem>
+                                                                    <MenuItem value={'IT1'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'IT2'}>KTMT</MenuItem>
+                                                                    <MenuItem value={'IT3'}>CNTT</MenuItem>
+                                                                    <MenuItem value={'IT4'}>ATTT</MenuItem>
                                                                 </Select>
                                                             </Stack>
                                                         </Grid>
