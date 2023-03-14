@@ -73,7 +73,7 @@ const BuildingDetail = () => {
                         <Typography id="modal-modal-title" variant="h4" component="h2" sx={{ mb: 2 }}>
                             {t('Thông tin toà nhà')}
                         </Typography>
-                        <img src="http://ctsv.hust.edu.vn/img/BK.jpg" alt="hust" width={200} style={{ width: 200, marginBottom: 20 }} />
+                        <img src={building?.images} alt="hust" width={200} style={{ width: 200, marginBottom: 20 }} />
                         <>
                             <Formik
                                 enableReinitialize

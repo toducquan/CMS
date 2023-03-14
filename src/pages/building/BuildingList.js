@@ -92,10 +92,10 @@ const BuildingList = () => {
                                             <TableCell width="20%" style={{ minWidth: 100 }} align="left">
                                                 {t('Tên')}
                                             </TableCell>
-                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
                                                 {t('Số tầng')}
                                             </TableCell>
-                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                            <TableCell width="15%" style={{ minWidth: 80 }} align="left">
                                                 {t('Địa chỉ')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">

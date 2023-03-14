@@ -229,9 +229,9 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                     value={true}
                                                     name="onlyForeign"
                                                     control={<Radio />}
-                                                    label={t('Foreign')}
+                                                    label={t('Nước ngoài')}
                                                 />
-                                                <FormControlLabel value={false} name="onlyForeign" control={<Radio />} label={t('None')} />
+                                                <FormControlLabel value={false} name="onlyForeign" control={<Radio />} label={t('Không')} />
                                             </RadioGroup>
                                         </Stack>
                                     </Grid>
@@ -246,8 +246,13 @@ const RoomInfor = ({ room, setRoom, updateRoomById }) => {
                                                 value={values?.onlyFemale}
                                                 onChange={handleChange}
                                             >
-                                                <FormControlLabel value={true} name="onlyFemale" control={<Radio />} label={t('Female')} />
-                                                <FormControlLabel value={false} name="onlyFemale" control={<Radio />} label={t('None')} />
+                                                <FormControlLabel
+                                                    value={true}
+                                                    name="onlyFemale"
+                                                    control={<Radio />}
+                                                    label={t('Phòng nữ')}
+                                                />
+                                                <FormControlLabel value={false} name="onlyFemale" control={<Radio />} label={t('Không')} />
                                             </RadioGroup>
                                         </Stack>
                                     </Grid>

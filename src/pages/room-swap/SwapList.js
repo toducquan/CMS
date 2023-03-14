@@ -82,7 +82,7 @@ const SwapList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Approve successfully',
+                            content: 'Phê duyệt nguyện vọng thành công',
                             severity: 'success'
                         })
                     );
@@ -184,13 +184,13 @@ const SwapList = () => {
                                         <TableCell width="5%" style={{ minWidth: 70 }} align="left">
                                             {t('No')}
                                         </TableCell>
-                                        <TableCell width="10%" style={{ minWidth: 100 }} align="left">
+                                        <TableCell width="15%" style={{ minWidth: 100 }} align="left">
                                             {t('Người yêu cầu')}
                                         </TableCell>
                                         <TableCell width="20%" style={{ minWidth: 80 }} align="left">
                                             {t('Phòng')}
                                         </TableCell>
-                                        <TableCell width="10%" style={{ minWidth: 80 }} align="left">
+                                        <TableCell width="15%" style={{ minWidth: 80 }} align="left">
                                             {t('Người được đổi')}
                                         </TableCell>
                                         <TableCell width="20%" style={{ minWidth: 80 }} align="left">

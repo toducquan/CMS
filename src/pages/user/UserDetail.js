@@ -198,10 +198,10 @@ const UserDetail = () => {
                                                                     value={values.religion}
                                                                     style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
                                                                 >
-                                                                    <MenuItem value={'None'}>None</MenuItem>
-                                                                    <MenuItem value={'Budhism'}>Budhism</MenuItem>
-                                                                    <MenuItem value={'Christian'}>Christian</MenuItem>
-                                                                    <MenuItem value={'Hindu'}>Hindu</MenuItem>
+                                                                    <MenuItem value={'None'}>Không</MenuItem>
+                                                                    <MenuItem value={'Budhism'}>Đạo Phật</MenuItem>
+                                                                    <MenuItem value={'Christian'}>Thiên Chúa Giáo</MenuItem>
+                                                                    <MenuItem value={'Hindu'}>Đạo Hindu</MenuItem>
                                                                 </Select>
                                                             </Stack>
                                                         </Grid>
@@ -451,24 +451,24 @@ const UserDetail = () => {
                                                                     onBlur={handleBlur}
                                                                     inputProps={{}}
                                                                 >
-                                                                    <MenuItem value={'IT1'}>Khoa hoc may tinh</MenuItem>
-                                                                    <MenuItem value={'IT2'}>Ki thuat may tinh</MenuItem>
-                                                                    <MenuItem value={'IT3'}>Cong nghe thong tin</MenuItem>
-                                                                    <MenuItem value={'BF1'}>Ki thuat sinh hoc</MenuItem>
-                                                                    <MenuItem value={'BF2'}>Ki thuat thuc pham</MenuItem>
-                                                                    <MenuItem value={'CH1'}>Ki thuat hoa hoc</MenuItem>
-                                                                    <MenuItem value={'CH2'}>Hoa hoc</MenuItem>
-                                                                    <MenuItem value={'CH3'}>Ki thuat in</MenuItem>
-                                                                    <MenuItem value={'EE1'}>Ki thuat dien</MenuItem>
-                                                                    <MenuItem value={'EE2'}>Ki thuat dieu khien-tu dong hoa</MenuItem>
-                                                                    <MenuItem value={'EM1'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'EM2'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'EM3'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'EM4'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'EM5'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'ET1'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'HE1'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'EV1'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'IT1'}>Khoa học máy tính</MenuItem>
+                                                                    <MenuItem value={'IT2'}>Kĩ thuật máy tính</MenuItem>
+                                                                    <MenuItem value={'IT3'}>Công nghệ thông tin</MenuItem>
+                                                                    <MenuItem value={'BF1'}>Kĩ thuật sinh học</MenuItem>
+                                                                    <MenuItem value={'BF2'}>Kĩ thuật thực phầm</MenuItem>
+                                                                    <MenuItem value={'CH1'}>Kĩ thuật hoá học</MenuItem>
+                                                                    <MenuItem value={'CH2'}>Hoá học</MenuItem>
+                                                                    <MenuItem value={'CH3'}>Kĩ thuật in</MenuItem>
+                                                                    <MenuItem value={'EE1'}>Kĩ thuật điện</MenuItem>
+                                                                    <MenuItem value={'EE2'}>Kĩ thuật điều khiển-Tự động hoá</MenuItem>
+                                                                    <MenuItem value={'EM1'}>Kinh tế công nghiệp</MenuItem>
+                                                                    <MenuItem value={'EM2'}>Quản lí công nghiệp</MenuItem>
+                                                                    <MenuItem value={'EM3'}>Quản trị kinh doanh</MenuItem>
+                                                                    <MenuItem value={'EM4'}>Kế toán</MenuItem>
+                                                                    <MenuItem value={'EM5'}>Tài chính ngân hàng</MenuItem>
+                                                                    <MenuItem value={'ET1'}>Điện tử-Viễn thông</MenuItem>
+                                                                    <MenuItem value={'HE1'}>Kĩ thuật nhiệt</MenuItem>
+                                                                    <MenuItem value={'EV1'}>Kĩ thuật môi trường</MenuItem>
                                                                 </Select>
                                                             </Stack>
                                                         </Grid>

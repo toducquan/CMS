@@ -82,7 +82,7 @@ const AspirationList = () => {
                     dispatch(
                         raiseNotification({
                             visible: true,
-                            content: 'Approve successfully',
+                            content: 'Duyệt nguyện vọng thành công',
                             severity: 'success'
                         })
                     );

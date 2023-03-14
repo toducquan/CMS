@@ -219,7 +219,7 @@ const UserList = () => {
                                             <TableCell width="5%" style={{ minWidth: 70 }} align="left">
                                                 {t('No')}
                                             </TableCell>
-                                            <TableCell width="10%" style={{ minWidth: 100 }} align="left">
+                                            <TableCell width="12%" style={{ minWidth: 100 }} align="left">
                                                 {t('Tên')}
                                             </TableCell>
                                             <TableCell width="10%" style={{ minWidth: 80 }} align="left">
@@ -234,10 +234,10 @@ const UserList = () => {
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
                                                 {t('Giới tính')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
+                                            <TableCell width="7%" style={{ minWidth: 80 }} align="left">
                                                 {t('Quốc gia')}
                                             </TableCell>
-                                            <TableCell width="5%" style={{ minWidth: 80 }} align="left">
+                                            <TableCell width="10%" style={{ minWidth: 80 }} align="left">
                                                 {t('Tôn giáo')}
                                             </TableCell>
                                             <TableCell width="5%" style={{ minWidth: 80 }} align="left">
@@ -278,7 +278,15 @@ const UserList = () => {
                                                 {path == 'student-list' && <TableCell align="left">{row?.room?.name}</TableCell>}
                                                 <TableCell align="left">{row?.gender == 'Male' ? 'Nam' : 'Nữ'}</TableCell>
                                                 <TableCell align="left">{row?.region == 'VietNam' ? 'Việt Nam' : 'Quốc tế'}</TableCell>
-                                                <TableCell align="left">{row?.religion}</TableCell>
+                                                <TableCell align="left">
+                                                    {row?.religion == 'None'
+                                                        ? 'Không'
+                                                        : row?.religion == 'Budhism'
+                                                        ? 'Đạo Phật'
+                                                        : row?.religion == 'Christian'
+                                                        ? 'Thiên Chúa Giáo'
+                                                        : 'Đạo Hindu'}
+                                                </TableCell>
                                                 <TableCell align="left">{row?.phone}</TableCell>
                                                 <TableCell align="center">{row?.age}</TableCell>
                                                 {path == 'student-list' ? (

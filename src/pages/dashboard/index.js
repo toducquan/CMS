@@ -88,12 +88,6 @@ const DashboardDefault = () => {
             <Grid item xs={12} sm={6} md={4} lg={3}>
                 <AnalyticEcommerce title="Số lượng phòng kí túc" count={room.length} percentage={70.5} extra="8,900" />
             </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Số sinh viên nam" count="82" percentage={22.4} extra="1,943" />
-            </Grid>
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-                <AnalyticEcommerce title="Số sinh viên nữ" count="68" percentage={30.4} extra="$20,395" />
-            </Grid>
 
             <Grid item xs={12} md={7} lg={8}>
                 <Grid container alignItems="center" justifyContent="space-between">
