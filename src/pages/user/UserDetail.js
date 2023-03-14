@@ -121,7 +121,6 @@ const UserDetail = () => {
                                                             error={Boolean(touched.name && errors.name)}
                                                             onBlur={handleBlur}
                                                             value={values?.name}
-                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -138,7 +137,6 @@ const UserDetail = () => {
                                                             error={Boolean(touched.phone && errors.phone)}
                                                             onBlur={handleBlur}
                                                             value={values?.phone}
-                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -155,7 +153,6 @@ const UserDetail = () => {
                                                             error={Boolean(touched.age && errors.age)}
                                                             onBlur={handleBlur}
                                                             value={values?.age}
-                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -169,7 +166,6 @@ const UserDetail = () => {
                                                             row
                                                             aria-labelledby="demo-row-radio-buttons-group-label"
                                                             value={values?.gender}
-                                                            onChange={handleChange}
                                                         >
                                                             <FormControlLabel
                                                                 value={'Male'}
@@ -342,7 +338,6 @@ const UserDetail = () => {
                                                             error={Boolean(touched.region && errors.region)}
                                                             onBlur={handleBlur}
                                                             value={values?.region}
-                                                            onChange={handleChange}
                                                         />
                                                     </Stack>
                                                 </Grid>
@@ -405,7 +400,12 @@ const UserDetail = () => {
                                                                     name="role"
                                                                     error={Boolean(touched.role && errors.role)}
                                                                     onBlur={handleBlur}
-                                                                    style={{ backgroundColor: '#eee', marginBottom: '1rem' }}
+                                                                    style={
+                                                                        profile.role == 'BUILDING_MANAGER'
+                                                                            ? { backgroundColor: '', marginBottom: '1rem' }
+                                                                            : { backgroundColor: '#eee', marginBottom: '1rem' }
+                                                                    }
+                                                                    onChange={handleChange}
                                                                     value={values?.role}
                                                                 >
                                                                     <MenuItem value={'BUILDING_MANAGER'}>Quản lí toà nhà</MenuItem>
@@ -449,13 +449,26 @@ const UserDetail = () => {
                                                                     value={values.major}
                                                                     name="major"
                                                                     onBlur={handleBlur}
-                                                                    onChange={handleChange}
                                                                     inputProps={{}}
                                                                 >
-                                                                    <MenuItem value={'IT1'}>KHMT</MenuItem>
-                                                                    <MenuItem value={'IT2'}>KTMT</MenuItem>
-                                                                    <MenuItem value={'IT3'}>CNTT</MenuItem>
-                                                                    <MenuItem value={'IT4'}>ATTT</MenuItem>
+                                                                    <MenuItem value={'IT1'}>Khoa hoc may tinh</MenuItem>
+                                                                    <MenuItem value={'IT2'}>Ki thuat may tinh</MenuItem>
+                                                                    <MenuItem value={'IT3'}>Cong nghe thong tin</MenuItem>
+                                                                    <MenuItem value={'BF1'}>Ki thuat sinh hoc</MenuItem>
+                                                                    <MenuItem value={'BF2'}>Ki thuat thuc pham</MenuItem>
+                                                                    <MenuItem value={'CH1'}>Ki thuat hoa hoc</MenuItem>
+                                                                    <MenuItem value={'CH2'}>Hoa hoc</MenuItem>
+                                                                    <MenuItem value={'CH3'}>Ki thuat in</MenuItem>
+                                                                    <MenuItem value={'EE1'}>Ki thuat dien</MenuItem>
+                                                                    <MenuItem value={'EE2'}>Ki thuat dieu khien-tu dong hoa</MenuItem>
+                                                                    <MenuItem value={'EM1'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'EM2'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'EM3'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'EM4'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'EM5'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'ET1'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'HE1'}>KHMT</MenuItem>
+                                                                    <MenuItem value={'EV1'}>KHMT</MenuItem>
                                                                 </Select>
                                                             </Stack>
                                                         </Grid>
@@ -552,22 +565,20 @@ const UserDetail = () => {
                                                     </Button>
                                                 </AnimateButton>
                                             </Grid>
-                                            {window.location.pathname.split('/')[1] != 'user' && (
-                                                <Grid item>
-                                                    <AnimateButton>
-                                                        <Button
-                                                            disableElevation
-                                                            disabled={isSubmitting}
-                                                            size="large"
-                                                            type="submit"
-                                                            variant="contained"
-                                                            color="primary"
-                                                        >
-                                                            {t('Update')}
-                                                        </Button>
-                                                    </AnimateButton>
-                                                </Grid>
-                                            )}
+                                            <Grid item>
+                                                <AnimateButton>
+                                                    <Button
+                                                        disableElevation
+                                                        disabled={isSubmitting}
+                                                        size="large"
+                                                        type="submit"
+                                                        variant="contained"
+                                                        color="primary"
+                                                    >
+                                                        {t('Update')}
+                                                    </Button>
+                                                </AnimateButton>
+                                            </Grid>
                                         </Grid>
                                     </form>
                                 )}

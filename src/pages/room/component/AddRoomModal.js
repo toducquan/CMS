@@ -102,7 +102,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Dành cho quốc tế')}
+                                {t('Dành cho quốc tế?')}
                             </InputLabel>
                             <RadioGroup
                                 row
@@ -119,7 +119,7 @@ const AddRoomModal = ({ modalAddVisible, setModalAddVisible, newRoom, setNewRoom
                         </Grid>
                         <Grid item xs={18}>
                             <InputLabel htmlFor="user-name" style={{ color: mainColor }}>
-                                {t('Dành cho nữ')}
+                                {t('Dành cho nữ?')}
                             </InputLabel>
                             <RadioGroup
                                 row

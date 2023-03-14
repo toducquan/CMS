@@ -74,32 +74,6 @@ const BuildingList = () => {
                     <Grid item sx={{ mt: 2, mb: 2 }}>
                         <Typography variant="h4">Danh sách toà nhà</Typography>
                     </Grid>
-                    <Stack direction="row" sx={{ mt: 0, justifyContent: 'space-between' }}>
-                        <Stack direction="row">
-                            <FormControl sx={{ width: { xs: '100%', md: 224 } }}>
-                                <OutlinedInput
-                                    size="small"
-                                    id="header-search"
-                                    ref={inputRef}
-                                    startAdornment={
-                                        <InputAdornment position="start" sx={{ mr: -0.5 }}>
-                                            <SearchOutlined />
-                                        </InputAdornment>
-                                    }
-                                    aria-describedby="header-search-text"
-                                    inputProps={{
-                                        'aria-label': 'weight'
-                                    }}
-                                    placeholder={t('Nhập tên toà nhà')}
-                                    value={buildingQuery?.name}
-                                    onChange={(e) => setBuildingQuery({ ...buildingQuery, name: e.target.value })}
-                                />
-                            </FormControl>
-                            <Button variant="contained" sx={{ ml: 3, width: '6rem' }} onClick={() => getBuilding()}>
-                                {t('Tìm kiếm')}
-                            </Button>
-                        </Stack>
-                    </Stack>
                     {isLoadingSearch ? (
                         <LoadingPage />
                     ) : (
@@ -163,25 +137,6 @@ const BuildingList = () => {
                                                                 onClick={() => navigate(`/building/${row?.id}`)}
                                                             >
                                                                 {t('Chi tiết')}
-                                                            </Button>
-                                                        </Grid>
-                                                        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-                                                            <Button
-                                                                variant="contained"
-                                                                sx={{
-                                                                    width: '74.33px',
-                                                                    marginLeft: { lg: '1rem' },
-                                                                    height: '1.8rem',
-                                                                    pt: 0.8,
-                                                                    bgcolor: '#f5222d'
-                                                                }}
-                                                                color="error"
-                                                                onClick={() => {
-                                                                    setModalDeleteVisible(true);
-                                                                    setSelectedCompany(row.id);
-                                                                }}
-                                                            >
-                                                                {t('Xoá')}
                                                             </Button>
                                                         </Grid>
                                                     </Grid>

@@ -13,7 +13,7 @@ import {
     MenuItem
 } from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
-import { addFeeService, getListFeeService } from 'services/feeService';
+import { addFeeService, deleteFeeByIdService, getListFeeService } from 'services/feeService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -60,13 +60,26 @@ const ListFee = () => {
     }, [window.location.pathname]);
 
     // Delete company in list company
-    const deleteBuilding = () => {};
+    const deleteFee = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            deleteFeeByIdService(selectedFee)
+                .then((res) => {
+                    getFeeFirstLoad();
+                    setIsLoading(false);
+                    setModalDeleteVisible(false);
+                })
+                .catch((err) => {
+                    console.log('err: ', err);
+                });
+        }, 500);
+    };
 
     const handleAddNewFee = () => {
         setIsLoading(true);
         addFeeService(newFee).then(() => {
             getFee();
-            dispatch(raiseNotification({ visible: true, content: 'Create successfully', severity: 'success' }));
+            dispatch(raiseNotification({ visible: true, content: 'Thêm mới thành công', severity: 'success' }));
             setIsLoading(false);
             setModalAddVisible(false);
         });
@@ -266,11 +279,11 @@ const ListFee = () => {
                     )}
                     {modalDeleteVisible && (
                         <ModalDelete
-                            title={t('Xoá khoản phí?')}
+                            title={t('Xác nhận xóa khoản phí?')}
                             content={t('')}
                             textBtnBack={t('Thoát')}
                             textBtnSubmit={t('Xoá')}
-                            action={deleteBuilding}
+                            action={deleteFee}
                             callbackClose={callbackClose}
                         />
                     )}

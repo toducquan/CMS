@@ -19,3 +19,8 @@ export const updateRentByIdService = async (id, data) => {
     const res = await apiUtils.patch('/rents/' + id, data);
     return res;
 };
+
+export const deleteRentByIdService = async (id) => {
+    const res = await apiUtils.delete('/rents/' + id);
+    return res;
+};

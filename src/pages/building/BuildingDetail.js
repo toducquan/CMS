@@ -108,7 +108,7 @@ const BuildingDetail = () => {
                                                             error={Boolean(touched.name && errors.name)}
                                                             onBlur={handleBlur}
                                                             value={values?.name}
-                                                            onChange={handleChange}
+                                                            onChange={profile.role == 'BUILDING_MANAGER' ? handleChange : undefined}
                                                         />
                                                         {touched.name && errors.name && (
                                                             <FormHelperText
@@ -163,7 +163,7 @@ const BuildingDetail = () => {
                                                             }
                                                             value={values?.numberOfFloors}
                                                             onBlur={handleBlur}
-                                                            onChange={handleChange}
+                                                            onChange={profile.role == 'BUILDING_MANAGER' ? handleChange : undefined}
                                                         />
                                                         {touched.numberOfFloors && errors.numberOfFloors && (
                                                             <FormHelperText

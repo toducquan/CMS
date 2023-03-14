@@ -308,25 +308,6 @@ const UserList = () => {
                                                                 {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
-                                                        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-                                                            <Button
-                                                                variant="contained"
-                                                                sx={{
-                                                                    width: '74.33px',
-                                                                    marginLeft: { lg: '1rem' },
-                                                                    height: '1.8rem',
-                                                                    pt: 0.8,
-                                                                    bgcolor: '#f5222d'
-                                                                }}
-                                                                color="error"
-                                                                onClick={() => {
-                                                                    setModalDeleteVisible(true);
-                                                                    setSelectedUser(row.id);
-                                                                }}
-                                                            >
-                                                                {t('Xoá')}
-                                                            </Button>
-                                                        </Grid>
                                                     </Grid>
                                                 </TableCell>
                                             </TableRow>

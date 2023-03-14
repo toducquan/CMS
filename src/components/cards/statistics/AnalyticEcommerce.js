@@ -35,7 +35,7 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
                                 </>
                             }
                             label={`${percentage}%`}
-                            sx={{ ml: 1.25, pl: 1 }}
+                            sx={{ ml: 3.25, pl: 1 }}
                             size="small"
                         />
                     </Grid>
@@ -43,13 +43,7 @@ const AnalyticEcommerce = ({ color, title, count, percentage, isLoss, extra }) =
             </Grid>
         </Stack>
         <Box sx={{ pt: 2.25 }}>
-            <Typography variant="caption" color="textSecondary">
-                You made an extra{' '}
-                <Typography component="span" variant="caption" sx={{ color: `${color || 'primary'}.main` }}>
-                    {extra}
-                </Typography>{' '}
-                this year
-            </Typography>
+            <Typography variant="caption" color="textSecondary"></Typography>
         </Box>
     </MainCard>
 );

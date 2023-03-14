@@ -288,20 +288,22 @@ const RentDetail = () => {
                                                     </Button>
                                                 </AnimateButton>
                                             </Grid>
-                                            <Grid item>
-                                                <AnimateButton>
-                                                    <Button
-                                                        disableElevation
-                                                        disabled={isSubmitting}
-                                                        size="large"
-                                                        type="submit"
-                                                        variant="contained"
-                                                        color="primary"
-                                                    >
-                                                        {t('Update')}
-                                                    </Button>
-                                                </AnimateButton>
-                                            </Grid>
+                                            {profile.role == 'BUILDING_MANAGER' && (
+                                                <Grid item>
+                                                    <AnimateButton>
+                                                        <Button
+                                                            disableElevation
+                                                            disabled={isSubmitting}
+                                                            size="large"
+                                                            type="submit"
+                                                            variant="contained"
+                                                            color="primary"
+                                                        >
+                                                            {t('Update')}
+                                                        </Button>
+                                                    </AnimateButton>
+                                                </Grid>
+                                            )}
                                         </Grid>
                                     </form>
                                 )}

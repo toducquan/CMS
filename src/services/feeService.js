@@ -19,3 +19,8 @@ export const updateFeeByIdService = async (id, data) => {
     const res = await apiUtils.patch('/fees/' + id, data);
     return res;
 };
+
+export const deleteFeeByIdService = async (id) => {
+    const res = await apiUtils.delete('/fees/' + id);
+    return res;
+};

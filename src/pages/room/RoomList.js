@@ -13,7 +13,7 @@ import {
     MenuItem
 } from '@mui/material';
 import { SearchOutlined } from '@ant-design/icons';
-import { addRoomService, getListRoomService } from 'services/roomService';
+import { addRoomService, deleteRoomByIdService, getListRoomService } from 'services/roomService';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -58,13 +58,26 @@ const RoomList = () => {
     }, []);
 
     // Delete company in list company
-    const deleteBuilding = () => {};
+    const deleteRoom = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            deleteRoomByIdService(selectedRoom)
+                .then((res) => {
+                    getRoom();
+                    setIsLoading(false);
+                    setModalDeleteVisible(false);
+                })
+                .catch((err) => {
+                    console.log('err: ', err);
+                });
+        }, 500);
+    };
 
     const handleAddNewRoom = () => {
         setIsLoading(true);
         addRoomService(newRoom).then(() => {
             getRoom();
-            dispatch(raiseNotification({ visible: true, content: 'Create successfully', severity: 'success' }));
+            dispatch(raiseNotification({ visible: true, content: 'Thêm mới thành công', severity: 'success' }));
             setIsLoading(false);
             setModalAddVisible(false);
         });
@@ -204,25 +217,27 @@ const RoomList = () => {
                                                                 {t('Chi tiết')}
                                                             </Button>
                                                         </Grid>
-                                                        <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
-                                                            <Button
-                                                                variant="contained"
-                                                                sx={{
-                                                                    width: '74.33px',
-                                                                    marginLeft: { lg: '1rem' },
-                                                                    height: '1.8rem',
-                                                                    pt: 0.8,
-                                                                    bgcolor: '#f5222d'
-                                                                }}
-                                                                color="error"
-                                                                onClick={() => {
-                                                                    setModalDeleteVisible(true);
-                                                                    setSelectedRoom(row.id);
-                                                                }}
-                                                            >
-                                                                {t('Xoá')}
-                                                            </Button>
-                                                        </Grid>
+                                                        {profile?.role == 'BUILDING_MANAGER' && (
+                                                            <Grid item xs={12} sm={12} md={12} lg={5} xl={5}>
+                                                                <Button
+                                                                    variant="contained"
+                                                                    sx={{
+                                                                        width: '74.33px',
+                                                                        marginLeft: { lg: '1rem' },
+                                                                        height: '1.8rem',
+                                                                        pt: 0.8,
+                                                                        bgcolor: '#f5222d'
+                                                                    }}
+                                                                    color="error"
+                                                                    onClick={() => {
+                                                                        setModalDeleteVisible(true);
+                                                                        setSelectedRoom(row.id);
+                                                                    }}
+                                                                >
+                                                                    {t('Xoá')}
+                                                                </Button>
+                                                            </Grid>
+                                                        )}
                                                     </Grid>
                                                 </TableCell>
                                             </TableRow>
@@ -239,7 +254,7 @@ const RoomList = () => {
                             content={t('')}
                             textBtnBack={t('Thoát')}
                             textBtnSubmit={t('Xoá')}
-                            action={deleteBuilding}
+                            action={deleteRoom}
                             callbackClose={callbackClose}
                         />
                     )}

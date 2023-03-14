@@ -45,8 +45,21 @@ const IncomeAreaChart = ({ slot }) => {
             xaxis: {
                 categories:
                     slot === 'month'
-                        ? ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                        : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        ? [
+                              'Tháng 1',
+                              'Tháng 2',
+                              'Tháng 3',
+                              'Tháng 4',
+                              'Tháng 5',
+                              'Tháng 6',
+                              'Tháng 7',
+                              'Tháng 8',
+                              'Tháng 9',
+                              'Tháng 10',
+                              'Tháng 11',
+                              'Tháng 12'
+                          ]
+                        : ['Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7', 'Chủ nhật'],
                 labels: {
                     style: {
                         colors: [
@@ -89,11 +102,11 @@ const IncomeAreaChart = ({ slot }) => {
 
     const [series, setSeries] = useState([
         {
-            name: 'Page Views',
+            name: 'Lươt xem',
             data: [0, 86, 28, 115, 48, 210, 136]
         },
         {
-            name: 'Sessions',
+            name: 'Truy cập',
             data: [0, 43, 14, 56, 24, 105, 68]
         }
     ]);
@@ -101,11 +114,11 @@ const IncomeAreaChart = ({ slot }) => {
     useEffect(() => {
         setSeries([
             {
-                name: 'Page Views',
+                name: 'Lươt xem',
                 data: slot === 'month' ? [76, 85, 101, 98, 87, 105, 91, 114, 94, 86, 115, 35] : [31, 40, 28, 51, 42, 109, 100]
             },
             {
-                name: 'Sessions',
+                name: 'Truy cập',
                 data: slot === 'month' ? [110, 60, 150, 35, 60, 36, 26, 45, 65, 52, 53, 41] : [11, 32, 45, 32, 34, 52, 41]
             }
         ]);

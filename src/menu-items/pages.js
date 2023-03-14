@@ -30,7 +30,7 @@ const pages = {
     children: [
         {
             id: 'dashboard',
-            title: 'Dashboard',
+            title: 'Thống kê',
             type: 'item',
             url: '/',
             icon: icons.DashboardOutlined,
